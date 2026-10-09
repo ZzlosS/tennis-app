@@ -90,7 +90,6 @@
     "reservations": "Rezervacije"
   },
   "placeholder": {
-    "bookings": "Ovde će biti vaše rezervacije.",
     "partners": "Ovde će biti otvoreni pozivi za partnera."
   },
   "profile": {
@@ -159,7 +158,10 @@
     "greetingNoName": "Zdravo",
     "map": "Mapa",
     "reserve": "Rezerviši",
-    "partners": "Partneri"
+    "partners": "Partneri",
+    "today": "Danas",
+    "tomorrow": "Sutra",
+    "nextBooking": "Vaša sledeća rezervacija"
   },
   "explore": {
     "search": "Pretraži grad ili klub",
@@ -297,9 +299,52 @@
   },
   "reservations": {
     "cancelOne": "Samo ovu",
-    "cancelSeries": "Celu seriju"
+    "cancelSeries": "Celu seriju",
+    "when": "Prikaži",
+    "upcoming": "Predstojeće",
+    "past": "Prošle",
+    "noneUpcoming": "Još nema rezervacija",
+    "noneUpcomingHint": "Pronađite teren u Istraži i rezervišite ga.",
+    "nonePast": "Nema prošlih rezervacija",
+    "cancelled": "Otkazano",
+    "joined": "prijavljeno {{joined}} od {{needed}}",
+    "partnerFound": "Partner pronađen",
+    "lookingForPartner": "Traži se partner",
+    "findPartner": "Nađi partnera",
+    "addResult": "Upiši rezultat",
+    "cancel": "Otkaži",
+    "cancelTitle": "Otkazati ovu rezervaciju?",
+    "cutoff": "Ovaj klub dozvoljava otkazivanje do {{hours}} h pre početka."
   },
   "reserve": {
-    "day": "Dan"
+    "day": "Dan",
+    "title": "Rezervacija",
+    "startTime": "Početak",
+    "taken": "{{time}}, zauzeto",
+    "nothingFree": "Nema slobodnih termina tog dana. Probajte drugi.",
+    "duration": "Trajanje",
+    "hours": "{{count}} h",
+    "repeat": "Ponavljanje",
+    "lookForPartner": "Traži partnera",
+    "lookForPartnerHint": "Drugi igrači mogu da se prijave",
+    "pickTime": "Izaberite početak",
+    "priceTimes": "{{price}} × {{hours}} h"
+  },
+  "bookingType": {
+    "ONE_TIME": "Jednom",
+    "MONTH": "Nedeljno, mesec dana",
+    "SEASON": "Cela sezona"
+  },
+  "partners": {
+    "playersNeeded": "Potrebno igrača",
+    "singles": "1 (singl)",
+    "doubles": "3 (dubl)",
+    "level": "Nivo",
+    "anyLevel": "Bilo koji nivo"
+  },
+  "bookingDetail": {
+    "title": "Rezervacija",
+    "openRequest": "Pogledaj zahtev za partnera",
+    "openCourt": "Pogledaj teren"
   }
 }

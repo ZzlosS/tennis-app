@@ -90,7 +90,6 @@
     "reservations": "Reservations"
   },
   "placeholder": {
-    "bookings": "Your reservations will show here.",
     "partners": "Open partner requests will show here."
   },
   "profile": {
@@ -159,7 +158,10 @@
     "greetingNoName": "Hi",
     "map": "Map",
     "reserve": "Reserve",
-    "partners": "Partners"
+    "partners": "Partners",
+    "today": "Today",
+    "tomorrow": "Tomorrow",
+    "nextBooking": "Your next reservation"
   },
   "explore": {
     "search": "Search city or club",
@@ -297,9 +299,52 @@
   },
   "reservations": {
     "cancelOne": "Only this one",
-    "cancelSeries": "The whole series"
+    "cancelSeries": "The whole series",
+    "when": "Show",
+    "upcoming": "Upcoming",
+    "past": "Past",
+    "noneUpcoming": "No reservations yet",
+    "noneUpcomingHint": "Find a court in Explore and reserve it.",
+    "nonePast": "No past reservations",
+    "cancelled": "Cancelled",
+    "joined": "{{joined}} of {{needed}} joined",
+    "partnerFound": "Partner found",
+    "lookingForPartner": "Looking for a partner",
+    "findPartner": "Find partner",
+    "addResult": "Add result",
+    "cancel": "Cancel",
+    "cancelTitle": "Cancel this reservation?",
+    "cutoff": "This club allows cancelling up to {{hours}} h before the start."
   },
   "reserve": {
-    "day": "Day"
+    "day": "Day",
+    "title": "Reserve",
+    "startTime": "Start time",
+    "taken": "{{time}}, taken",
+    "nothingFree": "Nothing free on this day. Try another one.",
+    "duration": "Duration",
+    "hours": "{{count}} h",
+    "repeat": "Repeat",
+    "lookForPartner": "Look for a partner",
+    "lookForPartnerHint": "Let other players ask to join",
+    "pickTime": "Pick a start time",
+    "priceTimes": "{{price}} × {{hours}} h"
+  },
+  "bookingType": {
+    "ONE_TIME": "One time",
+    "MONTH": "Weekly, 1 month",
+    "SEASON": "Whole season"
+  },
+  "partners": {
+    "playersNeeded": "Players needed",
+    "singles": "1 (singles)",
+    "doubles": "3 (doubles)",
+    "level": "Level",
+    "anyLevel": "Any level"
+  },
+  "bookingDetail": {
+    "title": "Reservation",
+    "openRequest": "See the partner request",
+    "openCourt": "See the court"
   }
 }
