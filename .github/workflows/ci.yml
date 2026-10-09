@@ -17,6 +17,8 @@ jobs:
       - run: npm ci
       - run: npm run lint
       - run: npm run format:check
+      - name: Generated API client matches api/openapi.json
+        run: npm run api:check
       - run: npm run typecheck
       - run: npm test -- --ci
       - name: Web build

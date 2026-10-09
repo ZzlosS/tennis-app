@@ -2,3 +2,5 @@ dist
 .expo
 coverage
 package-lock.json
+src/api/generated
+api/openapi.json
