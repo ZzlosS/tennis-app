@@ -1,13 +1,10 @@
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { Tabs } from "expo-router/js-tabs";
-import type { ComponentProps } from "react";
 import type { ColorValue } from "react-native";
 import { useTranslation } from "react-i18next";
 
-import { useAuth } from "@/auth";
 import { useTheme } from "@/theme";
-
-type IconName = ComponentProps<typeof Ionicons>["name"];
+import type { IconName } from "@/ui";
 
 function icon(name: IconName) {
   return function TabIcon({ color, size }: { color: ColorValue; size: number }) {
@@ -18,7 +15,6 @@ function icon(name: IconName) {
 
 export default function TabsLayout() {
   const { t } = useTranslation();
-  const { isClubAdmin } = useAuth();
   const { colors, fonts } = useTheme();
   return (
     <Tabs
@@ -31,22 +27,16 @@ export default function TabsLayout() {
         sceneStyle: { backgroundColor: colors.background },
       }}
     >
+      <Tabs.Screen name="home" options={{ title: t("tabs.home"), tabBarIcon: icon("home-outline") }} />
       <Tabs.Screen name="explore" options={{ title: t("tabs.explore"), tabBarIcon: icon("search") }} />
       <Tabs.Screen
-        name="bookings"
-        options={{ title: t("tabs.bookings"), tabBarIcon: icon("calendar-outline") }}
+        name="reservations"
+        options={{ title: t("tabs.reservations"), tabBarIcon: icon("calendar-outline") }}
       />
       <Tabs.Screen
         name="partners"
         options={{ title: t("tabs.partners"), tabBarIcon: icon("people-outline") }}
       />
-      {/* Club admin screens exist only for club admins and admins. */}
-      <Tabs.Protected guard={isClubAdmin}>
-        <Tabs.Screen
-          name="club-admin"
-          options={{ title: t("tabs.clubAdmin"), tabBarIcon: icon("business-outline") }}
-        />
-      </Tabs.Protected>
       <Tabs.Screen
         name="profile"
         options={{ title: t("tabs.profile"), tabBarIcon: icon("person-circle-outline") }}

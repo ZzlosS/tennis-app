@@ -50,6 +50,20 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
       "expo-splash-screen",
       { image: "./assets/splash-icon.png", imageWidth: 160, backgroundColor: "#FFFFFF" },
     ],
+    [
+      "expo-location",
+      {
+        locationWhenInUsePermission: "Rally shows the tennis courts near you.",
+      },
+    ],
+    ["expo-notifications", { color: "#0B7A4F" }],
+    // iOS uses Apple Maps and needs no key; Android needs a Google Maps key for release builds.
+    [
+      "react-native-maps",
+      process.env.GOOGLE_MAPS_ANDROID_API_KEY
+        ? { androidGoogleMapsApiKey: process.env.GOOGLE_MAPS_ANDROID_API_KEY }
+        : {},
+    ],
     ...sentryPlugin,
   ],
   experiments: {

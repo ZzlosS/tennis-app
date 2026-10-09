@@ -5,15 +5,8 @@
  * REST API for the tennis app. Every error has the shape { error: { code, message, fields? } }; clients translate by code.
  * OpenAPI spec version: 1.0.0
  */
-import type { PlayerLevel } from './playerLevel';
 
-export type GetPlayersParams = {
-city?: string;
-level?: PlayerLevel;
-/**
- * Only players whose first name, last name or nickname start with these words.
- */
-q?: string;
+export type GetMyNotificationsParams = {
 /**
  * Page size, 1 to 100. Default 20.
  */

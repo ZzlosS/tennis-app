@@ -8,7 +8,18 @@
     "back": "Nazad",
     "comingSoon": "Uskoro",
     "offline": "Niste na mreži. Neki podaci možda neće moći da se učitaju.",
-    "somethingWrong": "Nešto nije u redu"
+    "somethingWrong": "Nešto nije u redu",
+    "close": "Zatvori",
+    "delete": "Obriši",
+    "edit": "Izmeni",
+    "done": "Gotovo",
+    "seeAll": "Sve",
+    "loadMore": "Učitaj još",
+    "confirm": "Potvrdi",
+    "yes": "Da",
+    "no": "Ne",
+    "optional": "(nije obavezno)",
+    "free": "Besplatno"
   },
   "language": {
     "title": "Jezik",
@@ -73,16 +84,15 @@
   },
   "tabs": {
     "explore": "Istraži",
-    "bookings": "Rezervacije",
     "partners": "Partneri",
     "profile": "Profil",
-    "clubAdmin": "Moj klub"
+    "home": "Početna",
+    "reservations": "Rezervacije"
   },
   "placeholder": {
     "explore": "Ovde će biti klubovi i tereni u vašoj blizini.",
     "bookings": "Ovde će biti vaše rezervacije.",
-    "partners": "Ovde će biti otvoreni pozivi za partnera.",
-    "clubAdmin": "Ovde će biti današnji raspored i vaši tereni."
+    "partners": "Ovde će biti otvoreni pozivi za partnera."
   },
   "profile": {
     "title": "Profil",
@@ -126,5 +136,12 @@
     "RATE_LIMITED": "Previše pokušaja. Sačekajte minut pa pokušajte ponovo.",
     "TOKEN_INVALID": "Ovaj link više ne važi. Zatražite novi.",
     "NETWORK_ERROR": "Server nije dostupan. Proverite internet vezu."
+  },
+  "home": {
+    "greeting": "Zdravo, {{name}}",
+    "greetingNoName": "Zdravo",
+    "map": "Mapa",
+    "reserve": "Rezerviši",
+    "partners": "Partneri"
   }
 }

@@ -1300,6 +1300,32 @@
 				],
 				"type": "string"
 			},
+			"BookingPartnerInfo": {
+				"properties": {
+					"id": {
+						"type": "string"
+					},
+					"playersNeeded": {
+						"type": "number",
+						"format": "double"
+					},
+					"spotsLeft": {
+						"type": "number",
+						"format": "double"
+					},
+					"status": {
+						"$ref": "#/components/schemas/RequestStatus"
+					}
+				},
+				"required": [
+					"id",
+					"playersNeeded",
+					"spotsLeft",
+					"status"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
 			"BookingResponse": {
 				"properties": {
 					"id": {
@@ -1346,6 +1372,14 @@
 					"paidAt": {
 						"type": "string",
 						"nullable": true
+					},
+					"partnerRequest": {
+						"allOf": [
+							{
+								"$ref": "#/components/schemas/BookingPartnerInfo"
+							}
+						],
+						"nullable": true
 					}
 				},
 				"required": [
@@ -1359,7 +1393,8 @@
 					"bookingType",
 					"status",
 					"seriesId",
-					"paidAt"
+					"paidAt",
+					"partnerRequest"
 				],
 				"type": "object",
 				"additionalProperties": false
@@ -1390,6 +1425,99 @@
 					"past"
 				],
 				"type": "string"
+			},
+			"PartnerRole": {
+				"enum": [
+					"created",
+					"joined"
+				],
+				"type": "string"
+			},
+			"NotificationType": {
+				"type": "string",
+				"enum": [
+					"BOOKING_REMINDER",
+					"BOOKING_CANCELLED",
+					"PARTNER_JOINED",
+					"MATCH_TO_CONFIRM",
+					"MATCH_CONFIRMED",
+					"MATCH_DISPUTED",
+					"HANDOVER_REQUESTED",
+					"HANDOVER_ANSWERED"
+				]
+			},
+			"NotificationResponse": {
+				"properties": {
+					"id": {
+						"type": "string"
+					},
+					"type": {
+						"$ref": "#/components/schemas/NotificationType"
+					},
+					"title": {
+						"type": "string"
+					},
+					"body": {
+						"type": "string"
+					},
+					"data": {
+						"properties": {},
+						"additionalProperties": {
+							"type": "string"
+						},
+						"type": "object"
+					},
+					"createdAt": {
+						"type": "string"
+					},
+					"read": {
+						"type": "boolean"
+					}
+				},
+				"required": [
+					"id",
+					"type",
+					"title",
+					"body",
+					"data",
+					"createdAt",
+					"read"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"Page_NotificationResponse_": {
+				"properties": {
+					"items": {
+						"items": {
+							"$ref": "#/components/schemas/NotificationResponse"
+						},
+						"type": "array"
+					},
+					"nextCursor": {
+						"type": "string",
+						"nullable": true
+					}
+				},
+				"required": [
+					"items",
+					"nextCursor"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"UnreadCountResponse": {
+				"properties": {
+					"count": {
+						"type": "number",
+						"format": "double"
+					}
+				},
+				"required": [
+					"count"
+				],
+				"type": "object",
+				"additionalProperties": false
 			},
 			"CreateMatchRequest": {
 				"properties": {
@@ -3194,6 +3322,15 @@
 						"required": false,
 						"schema": {
 							"$ref": "#/components/schemas/PlayerLevel"
+						}
+					},
+					{
+						"description": "Only players whose first name, last name or nickname start with these words.",
+						"in": "query",
+						"name": "q",
+						"required": false,
+						"schema": {
+							"type": "string"
 						}
 					},
 					{
@@ -5911,7 +6048,8 @@
 													"bookingType": "ONE_TIME",
 													"status": "CONFIRMED",
 													"seriesId": null,
-													"paidAt": null
+													"paidAt": null,
+													"partnerRequest": null
 												}
 											],
 											"nextCursor": null
@@ -6010,6 +6148,390 @@
 						}
 					}
 				]
+			}
+		},
+		"/me/partner-requests": {
+			"get": {
+				"operationId": "GetMyPartnerRequests",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Page_PartnerRequestResponse_"
+								},
+								"examples": {
+									"Example 1": {
+										"value": {
+											"items": [
+												{
+													"id": "01JBX3K7M2Q8N5R4T6V9W0YZMN",
+													"booking": {
+														"id": "01JBX3K7M2Q8N5R4T6V9W0YZKL",
+														"startsAt": "2026-11-01T16:00:00.000Z",
+														"endsAt": "2026-11-01T18:00:00.000Z",
+														"court": {
+															"id": "01JBX3K7M2Q8N5R4T6V9W0YZEF",
+															"name": "Court 1",
+															"surface": "CLAY",
+															"clubId": "01JBX3K7M2Q8N5R4T6V9W0YZCD"
+														},
+														"club": {
+															"id": "01JBX3K7M2Q8N5R4T6V9W0YZCD",
+															"name": "TK Banjica",
+															"city": "Belgrade"
+														}
+													},
+													"createdBy": {
+														"id": "01JBX3K7M2Q8N5R4T6V9W0YZAB",
+														"nickname": "marko",
+														"level": "INTERMEDIATE"
+													},
+													"playersNeeded": 1,
+													"level": "INTERMEDIATE",
+													"spotsLeft": 1,
+													"joined": [],
+													"status": "OPEN"
+												}
+											],
+											"nextCursor": null
+										}
+									}
+								}
+							}
+						}
+					},
+					"400": {
+						"description": "VALIDATION_FAILED",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/ErrorBody"
+								}
+							}
+						}
+					},
+					"401": {
+						"description": "UNAUTHENTICATED",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/ErrorBody"
+								}
+							}
+						}
+					},
+					"403": {
+						"description": "FORBIDDEN",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/ErrorBody"
+								}
+							}
+						}
+					},
+					"429": {
+						"description": "RATE_LIMITED",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/ErrorBody"
+								}
+							}
+						}
+					}
+				},
+				"description": "Partner requests the player made or joined, open and full ones. Upcoming ones (booking not started) come\nsoonest first, past ones newest first.",
+				"tags": [
+					"Me"
+				],
+				"security": [
+					{
+						"jwt": []
+					}
+				],
+				"parameters": [
+					{
+						"description": "`created` for the player's own requests, `joined` for those they joined. Both when left out.",
+						"in": "query",
+						"name": "role",
+						"required": false,
+						"schema": {
+							"$ref": "#/components/schemas/PartnerRole"
+						}
+					},
+					{
+						"description": "`upcoming` (default) or `past`.",
+						"in": "query",
+						"name": "when",
+						"required": false,
+						"schema": {
+							"$ref": "#/components/schemas/BookingWhen"
+						}
+					},
+					{
+						"description": "Page size, 1 to 100. Default 20.",
+						"in": "query",
+						"name": "limit",
+						"required": false,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"description": "The nextCursor of the previous page.",
+						"in": "query",
+						"name": "cursor",
+						"required": false,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			}
+		},
+		"/me/notifications": {
+			"get": {
+				"operationId": "GetMyNotifications",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Page_NotificationResponse_"
+								},
+								"examples": {
+									"Example 1": {
+										"value": {
+											"items": [
+												{
+													"id": "6f1c2b9e-3d4a-4c1b-9a7e-2f5d8c0b1a23",
+													"type": "PARTNER_JOINED",
+													"title": "Someone joined you",
+													"body": "ana will play with you on Sat 1 Nov, 17:00",
+													"data": {
+														"requestId": "01JBX3K7M2Q8N5R4T6V9W0YZMN"
+													},
+													"createdAt": "2026-10-30T12:15:00.000Z",
+													"read": false
+												}
+											],
+											"nextCursor": null
+										}
+									}
+								}
+							}
+						}
+					},
+					"400": {
+						"description": "VALIDATION_FAILED",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/ErrorBody"
+								}
+							}
+						}
+					},
+					"401": {
+						"description": "UNAUTHENTICATED",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/ErrorBody"
+								}
+							}
+						}
+					},
+					"403": {
+						"description": "FORBIDDEN",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/ErrorBody"
+								}
+							}
+						}
+					},
+					"429": {
+						"description": "RATE_LIMITED",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/ErrorBody"
+								}
+							}
+						}
+					}
+				},
+				"description": "The notifications the player was sent, newest first; the last 50 are kept.",
+				"tags": [
+					"Me"
+				],
+				"security": [
+					{
+						"jwt": []
+					}
+				],
+				"parameters": [
+					{
+						"description": "Page size, 1 to 100. Default 20.",
+						"in": "query",
+						"name": "limit",
+						"required": false,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"description": "The nextCursor of the previous page.",
+						"in": "query",
+						"name": "cursor",
+						"required": false,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			}
+		},
+		"/me/notifications/unread": {
+			"get": {
+				"operationId": "GetMyUnreadCount",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/UnreadCountResponse"
+								},
+								"examples": {
+									"Example 1": {
+										"value": {
+											"count": 1
+										}
+									}
+								}
+							}
+						}
+					},
+					"400": {
+						"description": "VALIDATION_FAILED",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/ErrorBody"
+								}
+							}
+						}
+					},
+					"401": {
+						"description": "UNAUTHENTICATED",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/ErrorBody"
+								}
+							}
+						}
+					},
+					"403": {
+						"description": "FORBIDDEN",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/ErrorBody"
+								}
+							}
+						}
+					},
+					"429": {
+						"description": "RATE_LIMITED",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/ErrorBody"
+								}
+							}
+						}
+					}
+				},
+				"description": "How many notifications arrived since the player last marked the list as read.",
+				"tags": [
+					"Me"
+				],
+				"security": [
+					{
+						"jwt": []
+					}
+				],
+				"parameters": []
+			}
+		},
+		"/me/notifications/read": {
+			"post": {
+				"operationId": "MarkMyNotificationsRead",
+				"responses": {
+					"204": {
+						"description": "Marked"
+					},
+					"400": {
+						"description": "VALIDATION_FAILED",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/ErrorBody"
+								}
+							}
+						}
+					},
+					"401": {
+						"description": "UNAUTHENTICATED",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/ErrorBody"
+								}
+							}
+						}
+					},
+					"403": {
+						"description": "FORBIDDEN",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/ErrorBody"
+								}
+							}
+						}
+					},
+					"429": {
+						"description": "RATE_LIMITED",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/ErrorBody"
+								}
+							}
+						}
+					}
+				},
+				"description": "Marks every notification sent so far as read.",
+				"tags": [
+					"Me"
+				],
+				"security": [
+					{
+						"jwt": []
+					}
+				],
+				"parameters": []
 			}
 		},
 		"/matches": {
@@ -10340,7 +10862,13 @@
 											"bookingType": "ONE_TIME",
 											"status": "CONFIRMED",
 											"seriesId": null,
-											"paidAt": null
+											"paidAt": null,
+											"partnerRequest": {
+												"id": "01JBX3K7M2Q8N5R4T6V9W0YZPR",
+												"playersNeeded": 1,
+												"spotsLeft": 0,
+												"status": "CLOSED"
+											}
 										}
 									}
 								}
@@ -10470,7 +10998,8 @@
 													"bookingType": "ONE_TIME",
 													"status": "CONFIRMED",
 													"seriesId": null,
-													"paidAt": null
+													"paidAt": null,
+													"partnerRequest": null
 												}
 											],
 											"nextCursor": null
@@ -10656,7 +11185,13 @@
 											"bookingType": "ONE_TIME",
 											"status": "CONFIRMED",
 											"seriesId": null,
-											"paidAt": null
+											"paidAt": null,
+											"partnerRequest": {
+												"id": "01JBX3K7M2Q8N5R4T6V9W0YZPR",
+												"playersNeeded": 1,
+												"spotsLeft": 0,
+												"status": "CLOSED"
+											}
 										}
 									}
 								}
@@ -10772,7 +11307,13 @@
 											"bookingType": "ONE_TIME",
 											"status": "CONFIRMED",
 											"seriesId": null,
-											"paidAt": null
+											"paidAt": null,
+											"partnerRequest": {
+												"id": "01JBX3K7M2Q8N5R4T6V9W0YZPR",
+												"playersNeeded": 1,
+												"spotsLeft": 0,
+												"status": "CLOSED"
+											}
 										}
 									}
 								}
@@ -10986,7 +11527,13 @@
 											"bookingType": "ONE_TIME",
 											"status": "CONFIRMED",
 											"seriesId": null,
-											"paidAt": null
+											"paidAt": null,
+											"partnerRequest": {
+												"id": "01JBX3K7M2Q8N5R4T6V9W0YZPR",
+												"playersNeeded": 1,
+												"spotsLeft": 0,
+												"status": "CLOSED"
+											}
 										}
 									}
 								}
@@ -11124,7 +11671,13 @@
 											"bookingType": "ONE_TIME",
 											"status": "CONFIRMED",
 											"seriesId": null,
-											"paidAt": null
+											"paidAt": null,
+											"partnerRequest": {
+												"id": "01JBX3K7M2Q8N5R4T6V9W0YZPR",
+												"playersNeeded": 1,
+												"spotsLeft": 0,
+												"status": "CLOSED"
+											}
 										}
 									}
 								}
@@ -11251,7 +11804,13 @@
 											"bookingType": "ONE_TIME",
 											"status": "CONFIRMED",
 											"seriesId": null,
-											"paidAt": null
+											"paidAt": null,
+											"partnerRequest": {
+												"id": "01JBX3K7M2Q8N5R4T6V9W0YZPR",
+												"playersNeeded": 1,
+												"spotsLeft": 0,
+												"status": "CLOSED"
+											}
 										}
 									}
 								}

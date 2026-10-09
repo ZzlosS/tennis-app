@@ -41,7 +41,7 @@ function RootStack() {
       <OfflineBanner />
       <Stack screenOptions={{ headerShown: false, contentStyle: { backgroundColor: colors.background } }}>
         <Stack.Protected guard={signedIn}>
-          <Stack.Screen name="(tabs)" />
+          <Stack.Screen name="(app)" />
         </Stack.Protected>
         <Stack.Protected guard={!signedIn}>
           <Stack.Screen name="(auth)" />

@@ -5,6 +5,7 @@
  * REST API for the tennis app. Every error has the shape { error: { code, message, fields? } }; clients translate by code.
  * OpenAPI spec version: 1.0.0
  */
+import type { BookingPartnerInfo } from './bookingPartnerInfo';
 import type { BookingStatus } from './bookingStatus';
 import type { BookingType } from './bookingType';
 import type { ClubSummary } from './clubSummary';
@@ -26,4 +27,5 @@ export interface BookingResponse {
   seriesId: string | null;
   /** @nullable */
   paidAt: string | null;
+  partnerRequest: BookingPartnerInfo | null;
 }

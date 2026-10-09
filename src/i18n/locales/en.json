@@ -8,7 +8,18 @@
     "back": "Back",
     "comingSoon": "Coming soon",
     "offline": "You are offline. Some things may not load.",
-    "somethingWrong": "Something went wrong"
+    "somethingWrong": "Something went wrong",
+    "close": "Close",
+    "delete": "Delete",
+    "edit": "Edit",
+    "done": "Done",
+    "seeAll": "See all",
+    "loadMore": "Load more",
+    "confirm": "Confirm",
+    "yes": "Yes",
+    "no": "No",
+    "optional": "(optional)",
+    "free": "Free"
   },
   "language": {
     "title": "Language",
@@ -73,16 +84,15 @@
   },
   "tabs": {
     "explore": "Explore",
-    "bookings": "Reservations",
     "partners": "Partners",
     "profile": "Profile",
-    "clubAdmin": "My club"
+    "home": "Home",
+    "reservations": "Reservations"
   },
   "placeholder": {
     "explore": "Clubs and courts near you will show here.",
     "bookings": "Your reservations will show here.",
-    "partners": "Open partner requests will show here.",
-    "clubAdmin": "Today's schedule and your courts will show here."
+    "partners": "Open partner requests will show here."
   },
   "profile": {
     "title": "Profile",
@@ -126,5 +136,12 @@
     "RATE_LIMITED": "Too many tries. Wait a minute and try again.",
     "TOKEN_INVALID": "This link no longer works. Ask for a new one.",
     "NETWORK_ERROR": "Can't reach the server. Check your connection."
+  },
+  "home": {
+    "greeting": "Hi, {{name}}",
+    "greetingNoName": "Hi",
+    "map": "Map",
+    "reserve": "Reserve",
+    "partners": "Partners"
   }
 }

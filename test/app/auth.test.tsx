@@ -1,18 +1,12 @@
-import { act, fireEvent, screen, waitFor } from "@testing-library/react-native";
+import { act, fireEvent, screen } from "@testing-library/react-native";
 import { renderRouter } from "expo-router/testing-library";
 import { http, HttpResponse } from "msw";
 
 import { tokens } from "@/api";
 import i18n from "@/i18n";
 import { API, server } from "../msw";
-
-// The phone token store, backed by a plain Map so tests can seed and inspect it.
-const mockSecure = new Map<string, string>();
-jest.mock("expo-secure-store", () => ({
-  getItemAsync: async (key: string) => mockSecure.get(key) ?? null,
-  setItemAsync: async (key: string, value: string) => void mockSecure.set(key, value),
-  deleteItemAsync: async (key: string) => void mockSecure.delete(key),
-}));
+import { secureStore as mockSecure } from "../secureStoreMock";
+import { emptyLists } from "./signedIn";
 
 const player = {
   id: "p1",
@@ -31,6 +25,7 @@ const player = {
 
 function backend(me: Record<string, unknown> = player) {
   server.use(
+    ...emptyLists(),
     http.post(`${API}/auth/login`, async ({ request }) => {
       const body = (await request.json()) as { email: string; password: string };
       if (body.password !== "right-password") {
@@ -73,8 +68,8 @@ test("a good login opens the tabs and loads the profile from GET /me", async () 
   backend();
   renderRouter("./src/app", { initialUrl: "/" });
   await signIn();
-  expect(await screen.findByText("Coming soon")).toBeOnTheScreen();
-  expect(screen).toHavePathname("/explore");
+  expect(await screen.findByText("Hi, Ana")).toBeOnTheScreen();
+  expect(screen).toHavePathname("/home");
   expect(JSON.parse(mockSecure.get("rally.session")!)).toEqual({ accessToken: "A1", refreshToken: "R1" });
 
   fireEvent.press(screen.getByText("Profile"));
@@ -100,35 +95,19 @@ test("empty fields are caught before calling the API", async () => {
   expect(screen.getAllByText("Fill this in.")).toHaveLength(2);
 });
 
-test("a club admin gets the club admin tab and a player does not", async () => {
-  backend();
-  const view = renderRouter("./src/app", { initialUrl: "/" });
-  await signIn();
-  await screen.findByText("Coming soon");
-  await waitFor(() => expect(screen.getByText("Profile")).toBeOnTheScreen());
-  expect(screen.queryByText("My club")).toBeNull();
-  view.unmount();
-
-  await tokens.clear();
-  backend({ ...player, role: "CLUB_ADMIN" });
-  renderRouter("./src/app", { initialUrl: "/" });
-  await signIn();
-  expect(await screen.findByText("My club")).toBeOnTheScreen();
-});
-
 test("a saved session skips sign in", async () => {
   backend();
   mockSecure.set("rally.session", JSON.stringify({ accessToken: "A1", refreshToken: "R1" }));
   renderRouter("./src/app", { initialUrl: "/" });
-  expect(await screen.findByText("Coming soon")).toBeOnTheScreen();
-  expect(screen).toHavePathname("/explore");
+  expect(await screen.findByText("Hi, Ana")).toBeOnTheScreen();
+  expect(screen).toHavePathname("/home");
 });
 
 test("the player's saved language is used after sign in", async () => {
   backend({ ...player, language: "sr" });
   renderRouter("./src/app", { initialUrl: "/login" });
   await signIn();
-  expect(await screen.findByText("Uskoro")).toBeOnTheScreen();
+  expect(await screen.findByText("Zdravo, Ana")).toBeOnTheScreen();
 });
 
 test("signing out clears the session and returns to sign in", async () => {

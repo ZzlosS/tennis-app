@@ -5,15 +5,18 @@
  * REST API for the tennis app. Every error has the shape { error: { code, message, fields? } }; clients translate by code.
  * OpenAPI spec version: 1.0.0
  */
-import type { PlayerLevel } from './playerLevel';
+import type { BookingWhen } from './bookingWhen';
+import type { PartnerRole } from './partnerRole';
 
-export type GetPlayersParams = {
-city?: string;
-level?: PlayerLevel;
+export type GetMyPartnerRequestsParams = {
 /**
- * Only players whose first name, last name or nickname start with these words.
+ * `created` for the player's own requests, `joined` for those they joined. Both when left out.
  */
-q?: string;
+role?: PartnerRole;
+/**
+ * `upcoming` (default) or `past`.
+ */
+when?: BookingWhen;
 /**
  * Page size, 1 to 100. Default 20.
  */

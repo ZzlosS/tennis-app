@@ -19,6 +19,7 @@ const light: ThemeColors = {
   courtClub: { background: "#E6DDC6", text: "#0E3B2C" },
   courtPublic: { background: "#DCEBDF", text: "#0E3B2C" },
   courtPrivate: { background: "#E9DDF1", text: "#4A2667" },
+  surfaceTile: { CLAY: "#F3E1D7", HARD: "#DCE6F7", GRASS: "#DDEBDC" },
 };
 
 const dark: ThemeColors = {
@@ -38,6 +39,7 @@ const dark: ThemeColors = {
   courtClub: { background: "#2C4A3D", text: "#F7F3E8" },
   courtPublic: { background: "#1D4A36", text: "#CDEBD6" },
   courtPrivate: { background: "#3B2550", text: "#E9DDF1" },
+  surfaceTile: { CLAY: "#4A2E24", HARD: "#22324D", GRASS: "#22402A" },
 };
 
 const base = {

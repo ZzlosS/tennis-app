@@ -28,6 +28,8 @@ export type ThemeColors = {
   courtClub: TagColors;
   courtPublic: TagColors;
   courtPrivate: TagColors;
+  /** The coloured tile that stands in for a court photo, by surface. Decoration only, never behind text. */
+  surfaceTile: { CLAY: string; HARD: string; GRASS: string };
 };
 
 export type ThemeFonts = {
