@@ -1,4 +1,9 @@
+import { configure } from "@testing-library/react-native";
+
 import { server } from "./msw";
+
+// findBy* waits up to 5 s: screens load data over MSW, and CI runners are slower than laptops.
+configure({ asyncUtilTimeout: 5000 });
 
 process.env.EXPO_PUBLIC_API_URL = "http://api.test/v1";
 

@@ -31,4 +31,6 @@ module.exports = {
     "\\.mjs$": expoPreset.transform["\\.[jt]sx?$"],
   },
   testPathIgnorePatterns: ["/node_modules/", "/dist/"],
+  // The first screen test in each file builds the whole router tree, which is slow on CI runners.
+  testTimeout: 20_000,
 };
