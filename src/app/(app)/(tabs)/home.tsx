@@ -3,7 +3,14 @@ import { router } from "expo-router";
 import { useTranslation } from "react-i18next";
 import { Pressable, View } from "react-native";
 
-import { getGetMyBookingsQueryKey, useGetMyBookings, type BookingResponse } from "@/api";
+import {
+  getGetMyBookingsQueryKey,
+  getGetPartnerRequestsQueryKey,
+  useGetMyBookings,
+  useGetPartnerRequests,
+  type BookingResponse,
+} from "@/api";
+import { PartnerRow } from "@/components/PartnerRow";
 import { useAuth } from "@/auth";
 import { addDays, formatDate, formatMoney, formatTime, localDate } from "@/format";
 import { intlLocale } from "@/i18n";
@@ -76,6 +83,14 @@ export default function Home() {
   const nextParams = { when: "upcoming" as const, limit: 1 };
   const next = useGetMyBookings(nextParams, { query: { queryKey: getGetMyBookingsQueryKey(nextParams) } });
   const nextBooking = next.data?.items.find((b) => b.status !== "CANCELLED");
+  const gamesParams = { status: "OPEN" as const, limit: 10 };
+  const games = useGetPartnerRequests(gamesParams, {
+    query: { queryKey: getGetPartnerRequestsQueryKey(gamesParams) },
+  });
+  // Other players' games that still have room, soonest first, as on the canvas.
+  const lookingForGame = (games.data?.items ?? [])
+    .filter((r) => r.createdBy.id !== me?.id && r.spotsLeft > 0 && new Date(r.booking.startsAt) > new Date())
+    .slice(0, 3);
 
   return (
     <Screen>
@@ -110,6 +125,24 @@ export default function Home() {
           onPress={() => router.push("/partners")}
         />
       </View>
+
+      {lookingForGame.length > 0 ? (
+        <View style={{ gap: spacing.md }}>
+          <View style={{ flexDirection: "row", alignItems: "center" }}>
+            <Text variant="h2" style={{ flex: 1 }}>
+              {t("home.lookingForGame")}
+            </Text>
+            <Pressable accessibilityRole="button" onPress={() => router.push("/partners")} hitSlop={8}>
+              <Text variant="label" tone="primary">
+                {t("common.seeAll")}
+              </Text>
+            </Pressable>
+          </View>
+          {lookingForGame.map((request) => (
+            <PartnerRow key={request.id} request={request} />
+          ))}
+        </View>
+      ) : null}
     </Screen>
   );
 }

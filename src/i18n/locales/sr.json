@@ -18,8 +18,7 @@
     "yes": "Da",
     "no": "Ne",
     "optional": "(nije obavezno)",
-    "free": "Besplatno",
-    "comingSoon": "Uskoro"
+    "free": "Besplatno"
   },
   "language": {
     "title": "Jezik",
@@ -88,9 +87,6 @@
     "profile": "Profil",
     "home": "Početna",
     "reservations": "Rezervacije"
-  },
-  "placeholder": {
-    "partners": "Ovde će biti otvoreni pozivi za partnera."
   },
   "profile": {
     "title": "Profil",
@@ -161,7 +157,8 @@
     "partners": "Partneri",
     "today": "Danas",
     "tomorrow": "Sutra",
-    "nextBooking": "Vaša sledeća rezervacija"
+    "nextBooking": "Vaša sledeća rezervacija",
+    "lookingForGame": "Traži se igra"
   },
   "explore": {
     "search": "Pretraži grad ili klub",
@@ -340,7 +337,34 @@
     "singles": "1 (singl)",
     "doubles": "3 (dubl)",
     "level": "Nivo",
-    "anyLevel": "Bilo koji nivo"
+    "anyLevel": "Bilo koji nivo",
+    "subtitle": "Otvorene igre kojima trebaju igrači",
+    "show": "Prikaži",
+    "openGames": "Otvorene igre",
+    "myGames": "Moje igre",
+    "myLevel": "Moj nivo",
+    "thisWeek": "Ove nedelje",
+    "doublesChip": "Dubl",
+    "noneOpen": "Trenutno nema otvorenih igara",
+    "noneOpenHint": "Rezervišite teren i uključite Traži partnera da započnete igru.",
+    "noneMine": "Još nema igara",
+    "noneMineHint": "Igre koje započnete ili kojima se pridružite pojaviće se ovde.",
+    "openGame": "Igra igrača {{player}}, {{when}}",
+    "spotsLeft": "Treba još {{left}} od {{needed}}",
+    "full": "Popunjeno",
+    "join": "Pridruži se",
+    "leave": "Odustani",
+    "yours": "Vaša",
+    "request": "Zahtev za partnera",
+    "organiser": "Organizator",
+    "wantsLevel": "Traži se: {{level}}",
+    "joinedPlayers": "Prijavljeni",
+    "nobodyYet": "Niko se još nije prijavio.",
+    "close": "Zatvori zahtev",
+    "closeTitle": "Zatvoriti ovaj zahtev?",
+    "closeMessage": "Prijavljeni igrači gube mesto. Vaša rezervacija ostaje.",
+    "newTitle": "Nađi partnera",
+    "post": "Objavi zahtev"
   },
   "bookingDetail": {
     "title": "Rezervacija",

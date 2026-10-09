@@ -18,8 +18,7 @@
     "yes": "Yes",
     "no": "No",
     "optional": "(optional)",
-    "free": "Free",
-    "comingSoon": "Coming soon"
+    "free": "Free"
   },
   "language": {
     "title": "Language",
@@ -88,9 +87,6 @@
     "profile": "Profile",
     "home": "Home",
     "reservations": "Reservations"
-  },
-  "placeholder": {
-    "partners": "Open partner requests will show here."
   },
   "profile": {
     "title": "Profile",
@@ -161,7 +157,8 @@
     "partners": "Partners",
     "today": "Today",
     "tomorrow": "Tomorrow",
-    "nextBooking": "Your next reservation"
+    "nextBooking": "Your next reservation",
+    "lookingForGame": "Looking for a game"
   },
   "explore": {
     "search": "Search city or club",
@@ -340,7 +337,34 @@
     "singles": "1 (singles)",
     "doubles": "3 (doubles)",
     "level": "Level",
-    "anyLevel": "Any level"
+    "anyLevel": "Any level",
+    "subtitle": "Open games that need players",
+    "show": "Show",
+    "openGames": "Open games",
+    "myGames": "My games",
+    "myLevel": "My level",
+    "thisWeek": "This week",
+    "doublesChip": "Doubles",
+    "noneOpen": "No open games right now",
+    "noneOpenHint": "Reserve a court and switch on Look for a partner to start one.",
+    "noneMine": "No games yet",
+    "noneMineHint": "Games you start or join show here.",
+    "openGame": "Game by {{player}}, {{when}}",
+    "spotsLeft": "Needs {{left}} of {{needed}}",
+    "full": "Full",
+    "join": "Join",
+    "leave": "Leave",
+    "yours": "Yours",
+    "request": "Partner request",
+    "organiser": "Organiser",
+    "wantsLevel": "Looking for: {{level}}",
+    "joinedPlayers": "Joined",
+    "nobodyYet": "Nobody has joined yet.",
+    "close": "Close the request",
+    "closeTitle": "Close this request?",
+    "closeMessage": "Players who joined lose their place. Your reservation stays.",
+    "newTitle": "Find a partner",
+    "post": "Post the request"
   },
   "bookingDetail": {
     "title": "Reservation",
