@@ -20,7 +20,7 @@ const sentryPlugin: [string, Record<string, string>][] =
 export default ({ config }: ConfigContext): ExpoConfig => ({
   ...config,
   name: APP_ENV === "production" ? "Rally" : `Rally (${APP_ENV})`,
-  slug: "tennis-app",
+  slug: "ajmo",
   ...(process.env.EXPO_OWNER ? { owner: process.env.EXPO_OWNER } : {}),
   scheme: "rally",
   version: "1.0.0",

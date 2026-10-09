@@ -76,5 +76,5 @@ CI runs all of them on every pull request.
 `eas.json` has three profiles: `development` (dev client), `preview` (internal testing) and `production`.
 Each sets `APP_ENV`, which `app.config.ts` uses for the app name. The Expo project id is in `app.config.ts`
 (`EAS_PROJECT_ID` overrides it), so push notifications work on real phones and `npx eas-cli@latest build`
-finds the project. The project's slug on expo.dev must be `tennis-app`; set `EXPO_OWNER` when building
+finds the project. The project's slug on expo.dev is `ajmo` and must match `slug` here; set `EXPO_OWNER` when building
 under an Expo account other than the one you are logged in with.
