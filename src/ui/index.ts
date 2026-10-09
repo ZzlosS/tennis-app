@@ -7,3 +7,5 @@ export { Tag, type CourtKind } from "./Tag";
 export { Avatar, initials } from "./Avatar";
 export { Divider } from "./Divider";
 export { LoadingState, EmptyState, ErrorState } from "./states";
+export { Price } from "./Price";
+export { CourtKindTag } from "./CourtKindTag";

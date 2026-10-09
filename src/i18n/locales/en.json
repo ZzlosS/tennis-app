@@ -1,0 +1,129 @@
+{
+  "common": {
+    "appName": "Rally",
+    "loading": "Loading…",
+    "retry": "Try again",
+    "save": "Save",
+    "cancel": "Cancel",
+    "back": "Back",
+    "comingSoon": "Coming soon",
+    "offline": "You are offline. Some things may not load.",
+    "somethingWrong": "Something went wrong"
+  },
+  "language": {
+    "title": "Language",
+    "en": "English",
+    "sr": "Srpski"
+  },
+  "appearance": {
+    "title": "Appearance",
+    "look": "Look",
+    "minimal": "Minimal",
+    "wimbledon": "Wimbledon",
+    "scheme": "Light or dark",
+    "system": "Same as device",
+    "light": "Light",
+    "dark": "Dark"
+  },
+  "auth": {
+    "welcomeTitle": "Welcome back",
+    "welcomeSubtitle": "Sign in to reserve courts and find partners.",
+    "email": "Email",
+    "password": "Password",
+    "signIn": "Sign in",
+    "signOut": "Sign out",
+    "newHere": "New here?",
+    "createAccount": "Create an account",
+    "forgotPassword": "Forgot your password?",
+    "registerTitle": "Create your account",
+    "registerSubtitle": "Reserve courts, find partners and keep your match record.",
+    "firstName": "First name",
+    "lastName": "Last name",
+    "nickname": "Nickname (optional)",
+    "level": "Your level",
+    "address": "Address",
+    "city": "City",
+    "country": "Country",
+    "passwordHint": "At least 8 characters.",
+    "register": "Create account",
+    "haveAccount": "Already have an account?",
+    "forgotTitle": "Reset your password",
+    "forgotSubtitle": "We'll email you a link to choose a new one.",
+    "sendLink": "Send link",
+    "linkSent": "If an account uses that email, a link is on its way. It works once, for one hour.",
+    "resetTitle": "Choose a new password",
+    "newPassword": "New password",
+    "savePassword": "Save password",
+    "passwordChanged": "Your password is changed. Sign in with the new one.",
+    "linkIncomplete": "This link is incomplete. Ask for a new one.",
+    "verifyTitle": "Confirming your email",
+    "verified": "Your email is confirmed.",
+    "backToSignIn": "Back to sign in",
+    "required": "Fill this in.",
+    "invalidEmail": "Enter a valid email address.",
+    "passwordTooShort": "Use at least 8 characters."
+  },
+  "level": {
+    "NEWBIE": "Just starting",
+    "BEGINNER": "Beginner",
+    "INTERMEDIATE": "Intermediate",
+    "ADVANCED": "Advanced",
+    "PRO": "Pro"
+  },
+  "tabs": {
+    "explore": "Explore",
+    "bookings": "Reservations",
+    "partners": "Partners",
+    "profile": "Profile",
+    "clubAdmin": "My club"
+  },
+  "placeholder": {
+    "explore": "Clubs and courts near you will show here.",
+    "bookings": "Your reservations will show here.",
+    "partners": "Open partner requests will show here.",
+    "clubAdmin": "Today's schedule and your courts will show here."
+  },
+  "profile": {
+    "title": "Profile",
+    "emailNotVerified": "Your email is not confirmed yet. Check your inbox.",
+    "role": {
+      "PLAYER": "Player",
+      "CLUB_ADMIN": "Club admin",
+      "ADMIN": "Admin"
+    }
+  },
+  "courtKind": {
+    "CLUB": "Club",
+    "PUBLIC": "Public",
+    "PRIVATE": "Private"
+  },
+  "booking": {
+    "free": "Free",
+    "perHour": "{{price}}/h",
+    "payAtClub": "Pay at the club"
+  },
+  "errors": {
+    "VALIDATION_FAILED": "Some fields need another look.",
+    "UNAUTHENTICATED": "Please sign in again.",
+    "TOKEN_EXPIRED": "Your session ended. Please sign in again.",
+    "INVALID_CREDENTIALS": "Wrong email or password.",
+    "FORBIDDEN": "You can't do that.",
+    "NOT_FOUND": "We couldn't find that. It may have been removed.",
+    "EMAIL_TAKEN": "An account already uses this email.",
+    "CONFLICT": "That clashes with something that already exists.",
+    "INTERNAL": "Something went wrong on our side. Try again in a moment.",
+    "SLOT_TAKEN": "Someone just booked that time. Pick another slot.",
+    "OUTSIDE_OPENING_HOURS": "The court is closed at that time.",
+    "COURT_CLOSED": "This court is closed for that time.",
+    "BOOKING_IN_PAST": "That time has already passed.",
+    "CANCEL_TOO_LATE": "It's too late to cancel this reservation.",
+    "REQUEST_FULL": "This partner request is already full.",
+    "ALREADY_JOINED": "You're already in this request.",
+    "NOT_JOINED": "You're not part of this request.",
+    "MATCH_NOT_PENDING": "This match is already settled.",
+    "HANDOVER_PENDING": "This court already has a handover waiting for an answer.",
+    "RATE_LIMITED": "Too many tries. Wait a minute and try again.",
+    "TOKEN_INVALID": "This link no longer works. Ask for a new one.",
+    "NETWORK_ERROR": "Can't reach the server. Check your connection."
+  }
+}
