@@ -100,7 +100,25 @@
       "PLAYER": "Player",
       "CLUB_ADMIN": "Club admin",
       "ADMIN": "Admin"
-    }
+    },
+    "edit": "Edit profile",
+    "nickname": "Nickname",
+    "sendAgain": "Send the email again",
+    "verificationSent": "We sent a new confirmation link. Check your inbox.",
+    "myCourts": "My courts",
+    "add": "Add",
+    "noCourts": "Courts you add show here.",
+    "giveToClub": "Give to club",
+    "manageClub": "Manage {{club}}",
+    "matchHistory": "Match history",
+    "notifications": "Notifications",
+    "rackets": "Rackets",
+    "changePassword": "Change password",
+    "currentPassword": "Current password",
+    "passwordChanged": "Your password is changed. Other devices are signed out.",
+    "deleteAccount": "Delete account",
+    "deleteExplain": "This cancels your future reservations, closes the courts you own and signs you out everywhere. Enter your password to confirm.",
+    "deleteForever": "Delete my account"
   },
   "courtKind": {
     "CLUB": "Club",
@@ -211,5 +229,15 @@
     "confirmMessage": "If the club accepts, it manages the court and its reservations from then on.",
     "send": "Send request",
     "sent": "Request sent to {{club}}. You'll get a notification when they answer."
+  },
+  "rackets": {
+    "mine": "Your rackets",
+    "none": "You haven't added a racket yet.",
+    "all": "All rackets",
+    "catalogEmpty": "No rackets in the list yet",
+    "details": "{{year}} · {{weight}} g · {{head}} in²",
+    "yours": "Yours",
+    "add": "Add {{racket}}",
+    "remove": "Remove {{racket}}"
   }
 }

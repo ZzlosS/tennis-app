@@ -100,7 +100,25 @@
       "PLAYER": "Igrač",
       "CLUB_ADMIN": "Administrator kluba",
       "ADMIN": "Administrator"
-    }
+    },
+    "edit": "Izmeni profil",
+    "nickname": "Nadimak",
+    "sendAgain": "Pošalji imejl ponovo",
+    "verificationSent": "Poslali smo novi link za potvrdu. Proverite poštu.",
+    "myCourts": "Moji tereni",
+    "add": "Dodaj",
+    "noCourts": "Tereni koje dodate pojaviće se ovde.",
+    "giveToClub": "Predaj klubu",
+    "manageClub": "Upravljaj: {{club}}",
+    "matchHistory": "Istorija mečeva",
+    "notifications": "Obaveštenja",
+    "rackets": "Reketi",
+    "changePassword": "Promeni lozinku",
+    "currentPassword": "Trenutna lozinka",
+    "passwordChanged": "Lozinka je promenjena. Ostali uređaji su odjavljeni.",
+    "deleteAccount": "Obriši nalog",
+    "deleteExplain": "Otkazuju se vaše buduće rezervacije, zatvaraju se vaši tereni i odjavljujete se sa svih uređaja. Unesite lozinku da potvrdite.",
+    "deleteForever": "Obriši moj nalog"
   },
   "courtKind": {
     "CLUB": "Klub",
@@ -211,5 +229,15 @@
     "confirmMessage": "Ako klub prihvati, od tada on upravlja terenom i rezervacijama.",
     "send": "Pošalji zahtev",
     "sent": "Zahtev je poslat klubu {{club}}. Dobićete obaveštenje kada odgovore."
+  },
+  "rackets": {
+    "mine": "Vaši reketi",
+    "none": "Još niste dodali reket.",
+    "all": "Svi reketi",
+    "catalogEmpty": "Lista reketa je još prazna",
+    "details": "{{year}} · {{weight}} g · {{head}} in²",
+    "yours": "Vaš",
+    "add": "Dodaj {{racket}}",
+    "remove": "Ukloni {{racket}}"
   }
 }

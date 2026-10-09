@@ -74,7 +74,7 @@ test("a good login opens the tabs and loads the profile from GET /me", async () 
 
   fireEvent.press(screen.getByText("Profile"));
   expect(await screen.findByText("Ana Ivanović")).toBeOnTheScreen();
-  expect(screen.getByText("ana@example.rs")).toBeOnTheScreen();
+  expect(screen.getByText("@ana · Beograd · Advanced")).toBeOnTheScreen();
 });
 
 test("a wrong password shows the translated error, in English and Serbian", async () => {
