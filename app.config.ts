@@ -4,6 +4,9 @@ import type { ConfigContext, ExpoConfig } from "expo/config";
 type AppEnv = "development" | "preview" | "production";
 const APP_ENV = (process.env.APP_ENV ?? "development") as AppEnv;
 
+// The Expo project on expo.dev. Push tokens and EAS builds need it; EAS_PROJECT_ID overrides it for a fork.
+const EAS_PROJECT_ID = process.env.EAS_PROJECT_ID ?? "a477db1b-e67f-4bd3-9c45-fb7eaa2dcf6b";
+
 const sentryPlugin: [string, Record<string, string>][] =
   process.env.SENTRY_ORG && process.env.SENTRY_PROJECT
     ? [
@@ -18,6 +21,7 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
   ...config,
   name: APP_ENV === "production" ? "Rally" : `Rally (${APP_ENV})`,
   slug: "tennis-app",
+  ...(process.env.EXPO_OWNER ? { owner: process.env.EXPO_OWNER } : {}),
   scheme: "rally",
   version: "1.0.0",
   orientation: "portrait",
@@ -71,6 +75,6 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
   },
   extra: {
     appEnv: APP_ENV,
-    ...(process.env.EAS_PROJECT_ID ? { eas: { projectId: process.env.EAS_PROJECT_ID } } : {}),
+    eas: { projectId: EAS_PROJECT_ID },
   },
 });
