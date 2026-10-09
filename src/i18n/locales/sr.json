@@ -1,0 +1,130 @@
+{
+  "common": {
+    "appName": "Rally",
+    "loading": "Učitavanje…",
+    "retry": "Pokušajte ponovo",
+    "save": "Sačuvaj",
+    "cancel": "Otkaži",
+    "back": "Nazad",
+    "comingSoon": "Uskoro",
+    "offline": "Niste na mreži. Neki podaci možda neće moći da se učitaju.",
+    "somethingWrong": "Nešto nije u redu"
+  },
+  "language": {
+    "title": "Jezik",
+    "en": "English",
+    "sr": "Srpski"
+  },
+  "appearance": {
+    "title": "Izgled",
+    "look": "Stil",
+    "minimal": "Minimalni",
+    "wimbledon": "Vimbldon",
+    "scheme": "Svetla ili tamna",
+    "system": "Kao na uređaju",
+    "light": "Svetla",
+    "dark": "Tamna"
+  },
+  "auth": {
+    "welcomeTitle": "Dobro došli nazad",
+    "welcomeSubtitle": "Prijavite se da rezervišete teren i nađete partnere.",
+    "email": "Imejl",
+    "password": "Lozinka",
+    "signIn": "Prijavite se",
+    "signOut": "Odjavite se",
+    "newHere": "Prvi put ovde?",
+    "createAccount": "Napravite nalog",
+    "forgotPassword": "Zaboravili ste lozinku?",
+    "registerTitle": "Napravite nalog",
+    "registerSubtitle": "Rezervišite terene, nađite partnere i pratite svoje mečeve.",
+    "firstName": "Ime",
+    "lastName": "Prezime",
+    "nickname": "Nadimak (nije obavezno)",
+    "level": "Vaš nivo",
+    "address": "Adresa",
+    "city": "Grad",
+    "country": "Država",
+    "passwordHint": "Najmanje 8 znakova.",
+    "register": "Napravite nalog",
+    "haveAccount": "Već imate nalog?",
+    "forgotTitle": "Nova lozinka",
+    "forgotSubtitle": "Poslaćemo vam imejl sa linkom za novu lozinku.",
+    "sendLink": "Pošaljite link",
+    "linkSent": "Ako postoji nalog sa tim imejlom, link je na putu. Važi jednom, sat vremena.",
+    "resetTitle": "Izaberite novu lozinku",
+    "newPassword": "Nova lozinka",
+    "savePassword": "Sačuvajte lozinku",
+    "passwordChanged": "Lozinka je promenjena. Prijavite se novom lozinkom.",
+    "linkIncomplete": "Ovaj link nije potpun. Zatražite novi.",
+    "verifyTitle": "Potvrđujemo vaš imejl",
+    "verified": "Vaš imejl je potvrđen.",
+    "backToSignIn": "Nazad na prijavu",
+    "required": "Popunite ovo polje.",
+    "invalidEmail": "Unesite ispravnu imejl adresu.",
+    "passwordTooShort": "Koristite najmanje 8 znakova.",
+    "fieldInvalid": "Proverite ovo polje."
+  },
+  "level": {
+    "NEWBIE": "Tek počinjem",
+    "BEGINNER": "Početnik",
+    "INTERMEDIATE": "Srednji nivo",
+    "ADVANCED": "Napredni",
+    "PRO": "Profesionalac"
+  },
+  "tabs": {
+    "explore": "Istraži",
+    "bookings": "Rezervacije",
+    "partners": "Partneri",
+    "profile": "Profil",
+    "clubAdmin": "Moj klub"
+  },
+  "placeholder": {
+    "explore": "Ovde će biti klubovi i tereni u vašoj blizini.",
+    "bookings": "Ovde će biti vaše rezervacije.",
+    "partners": "Ovde će biti otvoreni pozivi za partnera.",
+    "clubAdmin": "Ovde će biti današnji raspored i vaši tereni."
+  },
+  "profile": {
+    "title": "Profil",
+    "emailNotVerified": "Vaš imejl još nije potvrđen. Proverite poštu.",
+    "role": {
+      "PLAYER": "Igrač",
+      "CLUB_ADMIN": "Administrator kluba",
+      "ADMIN": "Administrator"
+    }
+  },
+  "courtKind": {
+    "CLUB": "Klub",
+    "PUBLIC": "Javni",
+    "PRIVATE": "Privatni"
+  },
+  "booking": {
+    "free": "Besplatno",
+    "perHour": "{{price}}/h",
+    "payAtClub": "Plaćanje u klubu"
+  },
+  "errors": {
+    "VALIDATION_FAILED": "Neka polja treba ispraviti.",
+    "UNAUTHENTICATED": "Prijavite se ponovo.",
+    "TOKEN_EXPIRED": "Sesija je istekla. Prijavite se ponovo.",
+    "INVALID_CREDENTIALS": "Pogrešan imejl ili lozinka.",
+    "FORBIDDEN": "Nemate dozvolu za to.",
+    "NOT_FOUND": "Nismo to pronašli. Možda je uklonjeno.",
+    "EMAIL_TAKEN": "Već postoji nalog sa ovim imejlom.",
+    "CONFLICT": "To se poklapa sa nečim što već postoji.",
+    "INTERNAL": "Došlo je do greške kod nas. Pokušajte ponovo za trenutak.",
+    "SLOT_TAKEN": "Neko je upravo rezervisao taj termin. Izaberite drugi.",
+    "OUTSIDE_OPENING_HOURS": "Teren u to vreme ne radi.",
+    "COURT_CLOSED": "Teren je u to vreme zatvoren.",
+    "BOOKING_IN_PAST": "Taj termin je već prošao.",
+    "CANCEL_TOO_LATE": "Prekasno je za otkazivanje ove rezervacije.",
+    "REQUEST_FULL": "Ovaj poziv za partnera je već popunjen.",
+    "ALREADY_JOINED": "Već ste se pridružili ovom pozivu.",
+    "NOT_JOINED": "Niste deo ovog poziva.",
+    "MATCH_NOT_PENDING": "Ovaj meč je već rešen.",
+    "HANDOVER_PENDING": "Za ovaj teren već postoji zahtev za predaju koji čeka odgovor.",
+    "RATE_LIMITED": "Previše pokušaja. Sačekajte minut pa pokušajte ponovo.",
+    "TOKEN_INVALID": "Ovaj link više ne važi. Zatražite novi.",
+    "NETWORK_ERROR": "Server nije dostupan. Proverite internet vezu."
+  }
+}
