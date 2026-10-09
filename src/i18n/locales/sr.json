@@ -6,7 +6,6 @@
     "save": "Sačuvaj",
     "cancel": "Otkaži",
     "back": "Nazad",
-    "comingSoon": "Uskoro",
     "offline": "Niste na mreži. Neki podaci možda neće moći da se učitaju.",
     "somethingWrong": "Nešto nije u redu",
     "close": "Zatvori",
@@ -19,7 +18,8 @@
     "yes": "Da",
     "no": "Ne",
     "optional": "(nije obavezno)",
-    "free": "Besplatno"
+    "free": "Besplatno",
+    "comingSoon": "Uskoro"
   },
   "language": {
     "title": "Jezik",
@@ -239,5 +239,67 @@
     "yours": "Vaš",
     "add": "Dodaj {{racket}}",
     "remove": "Ukloni {{racket}}"
+  },
+  "clubAdmin": {
+    "pickClub": "Izaberite klub",
+    "noClubs": "Još ne upravljate klubom",
+    "reservations": "Rezervacije",
+    "courts": "Tereni",
+    "settings": "Podešavanja",
+    "playerApp": "Nazad u aplikaciju za igrače",
+    "header": "Administracija · {{club}}",
+    "today": "Danas",
+    "reservationCount": "Rezervacija: {{count}}",
+    "paid": "Plaćeno",
+    "unpaid": "Plaća u klubu",
+    "markPaid": "Označi kao plaćeno",
+    "markUnpaid": "Označi kao neplaćeno",
+    "cancelBooking": "Otkaži rezervaciju",
+    "cancelTitle": "Otkazati rezervaciju igrača {{player}}?",
+    "cancelMessage": "Igrač dobija obaveštenje.",
+    "repeats": "Ponavlja se nedeljno",
+    "partnerOpen": "Traži se partner",
+    "freeAt": "{{court}}, {{time}}, slobodno",
+    "blockedAt": "{{court}}, {{time}}, blokirano",
+    "blocked": "Blokirano",
+    "block": "Blokiraj",
+    "blockTitle": "Blokirati {{court}}, {{time}}?",
+    "blockMessage": "Niko ne može da rezerviše ovaj termin, na primer zbog časa ili popravke.",
+    "unblock": "Ukloni blokadu",
+    "unblockTitle": "Ponovo otvoriti ovaj termin na terenu {{court}}?",
+    "handoverAsk": "{{owner}} želi da preda „{{court}}“ vašem klubu",
+    "accept": "Prihvati",
+    "decline": "Odbij",
+    "currency": "Valuta kluba",
+    "open": "Otvoren",
+    "closed": "Zatvoren",
+    "openFor": "{{court}} otvoren za rezervacije",
+    "editCourt": "Izmeni {{court}}",
+    "addCourt": "Dodaj teren",
+    "pricePerHour": "Cena po satu ({{currency}})",
+    "emptyIsFree": "Prazno znači besplatno",
+    "ownHours": "Posebno radno vreme",
+    "ownHoursHint": "Isključeno: teren radi kao klub.",
+    "description": "Opis",
+    "cancelCutoff": "Otkazivanje najkasnije sati pre",
+    "seasonEnds": "Sezona se završava (GGGG-MM-DD)",
+    "wholeHours": "Unesite cele sate, na primer 24.",
+    "dateFormat": "Unesite u obliku 2027-05-31.",
+    "saved": "Sačuvano."
+  },
+  "hours": {
+    "title": "Radno vreme",
+    "closed": "Zatvoreno",
+    "openOn": "Otvoreno: {{day}}",
+    "opensOn": "Otvara se: {{day}}",
+    "closesOn": "Zatvara se: {{day}}",
+    "invalid": "Proverite vreme: unesite od 08:00 do 22:00, s otvaranjem pre zatvaranja."
+  },
+  "reservations": {
+    "cancelOne": "Samo ovu",
+    "cancelSeries": "Celu seriju"
+  },
+  "reserve": {
+    "day": "Dan"
   }
 }

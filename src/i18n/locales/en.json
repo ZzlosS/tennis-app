@@ -6,7 +6,6 @@
     "save": "Save",
     "cancel": "Cancel",
     "back": "Back",
-    "comingSoon": "Coming soon",
     "offline": "You are offline. Some things may not load.",
     "somethingWrong": "Something went wrong",
     "close": "Close",
@@ -19,7 +18,8 @@
     "yes": "Yes",
     "no": "No",
     "optional": "(optional)",
-    "free": "Free"
+    "free": "Free",
+    "comingSoon": "Coming soon"
   },
   "language": {
     "title": "Language",
@@ -239,5 +239,67 @@
     "yours": "Yours",
     "add": "Add {{racket}}",
     "remove": "Remove {{racket}}"
+  },
+  "clubAdmin": {
+    "pickClub": "Pick a club",
+    "noClubs": "You don't manage a club yet",
+    "reservations": "Reservations",
+    "courts": "Courts",
+    "settings": "Settings",
+    "playerApp": "Back to the player app",
+    "header": "Club admin · {{club}}",
+    "today": "Today",
+    "reservationCount": "Reservations: {{count}}",
+    "paid": "Paid",
+    "unpaid": "Pay at the club",
+    "markPaid": "Mark as paid",
+    "markUnpaid": "Mark as unpaid",
+    "cancelBooking": "Cancel reservation",
+    "cancelTitle": "Cancel {{player}}'s reservation?",
+    "cancelMessage": "The player gets a notification.",
+    "repeats": "Repeats weekly",
+    "partnerOpen": "Partner request open",
+    "freeAt": "{{court}}, {{time}}, free",
+    "blockedAt": "{{court}}, {{time}}, blocked",
+    "blocked": "Blocked",
+    "block": "Block",
+    "blockTitle": "Block {{court}}, {{time}}?",
+    "blockMessage": "Nobody can reserve this hour, for example for a lesson or repairs.",
+    "unblock": "Remove block",
+    "unblockTitle": "Open this hour on {{court}} again?",
+    "handoverAsk": "{{owner}} wants to give “{{court}}” to your club",
+    "accept": "Accept",
+    "decline": "Decline",
+    "currency": "Club currency",
+    "open": "Open",
+    "closed": "Closed",
+    "openFor": "{{court}} open for reservations",
+    "editCourt": "Edit {{court}}",
+    "addCourt": "Add court",
+    "pricePerHour": "Price per hour ({{currency}})",
+    "emptyIsFree": "Empty means free",
+    "ownHours": "Own opening hours",
+    "ownHoursHint": "Off: the court follows the club's hours.",
+    "description": "Description",
+    "cancelCutoff": "Cancel up to this many hours before",
+    "seasonEnds": "Season ends on (YYYY-MM-DD)",
+    "wholeHours": "Use whole hours, like 24.",
+    "dateFormat": "Use the form 2027-05-31.",
+    "saved": "Saved."
+  },
+  "hours": {
+    "title": "Opening hours",
+    "closed": "Closed",
+    "openOn": "Open on {{day}}",
+    "opensOn": "Opens on {{day}}",
+    "closesOn": "Closes on {{day}}",
+    "invalid": "Check the hours: use 08:00 to 22:00, with opening before closing."
+  },
+  "reservations": {
+    "cancelOne": "Only this one",
+    "cancelSeries": "The whole series"
+  },
+  "reserve": {
+    "day": "Day"
   }
 }
