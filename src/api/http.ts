@@ -76,7 +76,9 @@ function refreshSession(): Promise<Session | null> {
 }
 
 export async function apiFetch<T>(url: string, init: RequestInit = {}): Promise<T> {
-  const session = tokens.get();
+  let session = tokens.get();
+  // On web only the refresh token survives a reload, so the first call gets an access token first.
+  if (session && !session.accessToken && !NO_AUTH.test(url)) session = await refreshSession();
   let res = await send(url, init, session?.accessToken);
   let body = await readBody(res);
 

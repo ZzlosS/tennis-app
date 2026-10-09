@@ -61,7 +61,8 @@
     "backToSignIn": "Back to sign in",
     "required": "Fill this in.",
     "invalidEmail": "Enter a valid email address.",
-    "passwordTooShort": "Use at least 8 characters."
+    "passwordTooShort": "Use at least 8 characters.",
+    "fieldInvalid": "Check this field."
   },
   "level": {
     "NEWBIE": "Just starting",

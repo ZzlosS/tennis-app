@@ -61,7 +61,8 @@
     "backToSignIn": "Nazad na prijavu",
     "required": "Popunite ovo polje.",
     "invalidEmail": "Unesite ispravnu imejl adresu.",
-    "passwordTooShort": "Koristite najmanje 8 znakova."
+    "passwordTooShort": "Koristite najmanje 8 znakova.",
+    "fieldInvalid": "Proverite ovo polje."
   },
   "level": {
     "NEWBIE": "Tek počinjem",

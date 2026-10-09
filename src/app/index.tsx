@@ -1,9 +1,8 @@
-import { Text, View } from "react-native";
+import { Redirect } from "expo-router";
+
+import { useAuth } from "@/auth";
 
 export default function Index() {
-  return (
-    <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-      <Text>Rally</Text>
-    </View>
-  );
+  const { status } = useAuth();
+  return <Redirect href={status === "signedIn" ? "/explore" : "/login"} />;
 }
