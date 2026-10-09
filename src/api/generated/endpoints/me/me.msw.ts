@@ -24,7 +24,9 @@ import {
   CourtSurface,
   HandoverStatus,
   MatchStatus,
+  NotificationType,
   PlayerLevel,
+  RequestStatus,
   Role
 } from '../../model';
 import type {
@@ -35,7 +37,10 @@ import type {
   PageCourtResponse,
   PageHandoverResponse,
   PageMatchResponse,
-  StatsResponse
+  PageNotificationResponse,
+  PagePartnerRequestResponse,
+  StatsResponse,
+  UnreadCountResponse
 } from '../../model';
 
 
@@ -55,7 +60,13 @@ export const getGetMyMatchesResponseMock = (overrideResponse: Partial<Extract<Pa
 
 export const getGetMyStatsResponseMock = (overrideResponse: Partial<Extract<StatsResponse, object>> = {}): StatsResponse => ({matches: faker.number.float({fractionDigits: 2}), wins: faker.number.float({fractionDigits: 2}), losses: faker.number.float({fractionDigits: 2}), winRate: faker.helpers.arrayElement([faker.number.float({fractionDigits: 2}), null]), setsWon: faker.number.float({fractionDigits: 2}), setsLost: faker.number.float({fractionDigits: 2}), gamesWon: faker.number.float({fractionDigits: 2}), gamesLost: faker.number.float({fractionDigits: 2}), ...overrideResponse})
 
-export const getGetMyBookingsResponseMock = (overrideResponse: Partial<Extract<PageBookingResponse, object>> = {}): PageBookingResponse => ({items: Array.from({ length: faker.number.int({min: 1, max: 10}) }, (_, i) => i + 1).map(() => ({id: faker.string.alpha({length: {min: 10, max: 20}}), startsAt: faker.string.alpha({length: {min: 10, max: 20}}), endsAt: faker.string.alpha({length: {min: 10, max: 20}}), court: {id: faker.string.alpha({length: {min: 10, max: 20}}), name: faker.string.alpha({length: {min: 10, max: 20}}), surface: faker.helpers.arrayElement(Object.values(CourtSurface)), clubId: faker.helpers.arrayElement([faker.string.alpha({length: {min: 10, max: 20}}), null])}, club: faker.helpers.arrayElement([{id: faker.string.alpha({length: {min: 10, max: 20}}), name: faker.string.alpha({length: {min: 10, max: 20}}), city: faker.string.alpha({length: {min: 10, max: 20}})},null,]), player: {id: faker.string.alpha({length: {min: 10, max: 20}}), nickname: faker.string.alpha({length: {min: 10, max: 20}}), level: faker.helpers.arrayElement(Object.values(PlayerLevel))}, totalPrice: faker.helpers.arrayElement([{amountMinor: faker.number.float({fractionDigits: 2}), currency: faker.string.alpha({length: {min: 10, max: 20}})},null,]), bookingType: faker.helpers.arrayElement(Object.values(BookingType)), status: faker.helpers.arrayElement(Object.values(BookingStatus)), seriesId: faker.helpers.arrayElement([faker.string.alpha({length: {min: 10, max: 20}}), null]), paidAt: faker.helpers.arrayElement([faker.string.alpha({length: {min: 10, max: 20}}), null])})), nextCursor: faker.helpers.arrayElement([faker.string.alpha({length: {min: 10, max: 20}}), null]), ...overrideResponse})
+export const getGetMyBookingsResponseMock = (overrideResponse: Partial<Extract<PageBookingResponse, object>> = {}): PageBookingResponse => ({items: Array.from({ length: faker.number.int({min: 1, max: 10}) }, (_, i) => i + 1).map(() => ({id: faker.string.alpha({length: {min: 10, max: 20}}), startsAt: faker.string.alpha({length: {min: 10, max: 20}}), endsAt: faker.string.alpha({length: {min: 10, max: 20}}), court: {id: faker.string.alpha({length: {min: 10, max: 20}}), name: faker.string.alpha({length: {min: 10, max: 20}}), surface: faker.helpers.arrayElement(Object.values(CourtSurface)), clubId: faker.helpers.arrayElement([faker.string.alpha({length: {min: 10, max: 20}}), null])}, club: faker.helpers.arrayElement([{id: faker.string.alpha({length: {min: 10, max: 20}}), name: faker.string.alpha({length: {min: 10, max: 20}}), city: faker.string.alpha({length: {min: 10, max: 20}})},null,]), player: {id: faker.string.alpha({length: {min: 10, max: 20}}), nickname: faker.string.alpha({length: {min: 10, max: 20}}), level: faker.helpers.arrayElement(Object.values(PlayerLevel))}, totalPrice: faker.helpers.arrayElement([{amountMinor: faker.number.float({fractionDigits: 2}), currency: faker.string.alpha({length: {min: 10, max: 20}})},null,]), bookingType: faker.helpers.arrayElement(Object.values(BookingType)), status: faker.helpers.arrayElement(Object.values(BookingStatus)), seriesId: faker.helpers.arrayElement([faker.string.alpha({length: {min: 10, max: 20}}), null]), paidAt: faker.helpers.arrayElement([faker.string.alpha({length: {min: 10, max: 20}}), null]), partnerRequest: faker.helpers.arrayElement([{id: faker.string.alpha({length: {min: 10, max: 20}}), playersNeeded: faker.number.float({fractionDigits: 2}), spotsLeft: faker.number.float({fractionDigits: 2}), status: faker.helpers.arrayElement(Object.values(RequestStatus))},null,])})), nextCursor: faker.helpers.arrayElement([faker.string.alpha({length: {min: 10, max: 20}}), null]), ...overrideResponse})
+
+export const getGetMyPartnerRequestsResponseMock = (overrideResponse: Partial<Extract<PagePartnerRequestResponse, object>> = {}): PagePartnerRequestResponse => ({items: Array.from({ length: faker.number.int({min: 1, max: 10}) }, (_, i) => i + 1).map(() => ({id: faker.string.alpha({length: {min: 10, max: 20}}), booking: {id: faker.string.alpha({length: {min: 10, max: 20}}), startsAt: faker.string.alpha({length: {min: 10, max: 20}}), endsAt: faker.string.alpha({length: {min: 10, max: 20}}), court: {id: faker.string.alpha({length: {min: 10, max: 20}}), name: faker.string.alpha({length: {min: 10, max: 20}}), surface: faker.helpers.arrayElement(Object.values(CourtSurface)), clubId: faker.helpers.arrayElement([faker.string.alpha({length: {min: 10, max: 20}}), null])}, club: faker.helpers.arrayElement([{id: faker.string.alpha({length: {min: 10, max: 20}}), name: faker.string.alpha({length: {min: 10, max: 20}}), city: faker.string.alpha({length: {min: 10, max: 20}})},null,])}, createdBy: {id: faker.string.alpha({length: {min: 10, max: 20}}), nickname: faker.string.alpha({length: {min: 10, max: 20}}), level: faker.helpers.arrayElement(Object.values(PlayerLevel))}, playersNeeded: faker.number.float({fractionDigits: 2}), level: faker.helpers.arrayElement([faker.helpers.arrayElement(Object.values(PlayerLevel)),null,]), spotsLeft: faker.number.float({fractionDigits: 2}), joined: Array.from({ length: faker.number.int({min: 1, max: 10}) }, (_, i) => i + 1).map(() => ({id: faker.string.alpha({length: {min: 10, max: 20}}), nickname: faker.string.alpha({length: {min: 10, max: 20}}), level: faker.helpers.arrayElement(Object.values(PlayerLevel))})), status: faker.helpers.arrayElement(Object.values(RequestStatus))})), nextCursor: faker.helpers.arrayElement([faker.string.alpha({length: {min: 10, max: 20}}), null]), ...overrideResponse})
+
+export const getGetMyNotificationsResponseMock = (overrideResponse: Partial<Extract<PageNotificationResponse, object>> = {}): PageNotificationResponse => ({items: Array.from({ length: faker.number.int({min: 1, max: 10}) }, (_, i) => i + 1).map(() => ({id: faker.string.alpha({length: {min: 10, max: 20}}), type: faker.helpers.arrayElement(Object.values(NotificationType)), title: faker.string.alpha({length: {min: 10, max: 20}}), body: faker.string.alpha({length: {min: 10, max: 20}}), data: {}, createdAt: faker.string.alpha({length: {min: 10, max: 20}}), read: faker.datatype.boolean()})), nextCursor: faker.helpers.arrayElement([faker.string.alpha({length: {min: 10, max: 20}}), null]), ...overrideResponse})
+
+export const getGetMyUnreadCountResponseMock = (overrideResponse: Partial<Extract<UnreadCountResponse, object>> = {}): UnreadCountResponse => ({count: faker.number.float({fractionDigits: 2}), ...overrideResponse})
 
 
 export const getGetMeMockHandler = (overrideResponse?: MeResponse | ((info: Parameters<Parameters<typeof http.get>[1]>[0]) => Promise<MeResponse> | MeResponse), options?: RequestHandlerOptions) => {
@@ -205,6 +216,52 @@ export const getGetMyBookingsMockHandler = (overrideResponse?: PageBookingRespon
       })
   }, options)
 }
+
+export const getGetMyPartnerRequestsMockHandler = (overrideResponse?: PagePartnerRequestResponse | ((info: Parameters<Parameters<typeof http.get>[1]>[0]) => Promise<PagePartnerRequestResponse> | PagePartnerRequestResponse), options?: RequestHandlerOptions) => {
+  return http.get('*/me/partner-requests', async (info: Parameters<Parameters<typeof http.get>[1]>[0]) => {
+
+
+    return HttpResponse.json(overrideResponse !== undefined
+    ? (typeof overrideResponse === "function" ? await overrideResponse(info) : overrideResponse)
+    : getGetMyPartnerRequestsResponseMock(),
+      { status: 200
+      })
+  }, options)
+}
+
+export const getGetMyNotificationsMockHandler = (overrideResponse?: PageNotificationResponse | ((info: Parameters<Parameters<typeof http.get>[1]>[0]) => Promise<PageNotificationResponse> | PageNotificationResponse), options?: RequestHandlerOptions) => {
+  return http.get('*/me/notifications', async (info: Parameters<Parameters<typeof http.get>[1]>[0]) => {
+
+
+    return HttpResponse.json(overrideResponse !== undefined
+    ? (typeof overrideResponse === "function" ? await overrideResponse(info) : overrideResponse)
+    : getGetMyNotificationsResponseMock(),
+      { status: 200
+      })
+  }, options)
+}
+
+export const getGetMyUnreadCountMockHandler = (overrideResponse?: UnreadCountResponse | ((info: Parameters<Parameters<typeof http.get>[1]>[0]) => Promise<UnreadCountResponse> | UnreadCountResponse), options?: RequestHandlerOptions) => {
+  return http.get('*/me/notifications/unread', async (info: Parameters<Parameters<typeof http.get>[1]>[0]) => {
+
+
+    return HttpResponse.json(overrideResponse !== undefined
+    ? (typeof overrideResponse === "function" ? await overrideResponse(info) : overrideResponse)
+    : getGetMyUnreadCountResponseMock(),
+      { status: 200
+      })
+  }, options)
+}
+
+export const getMarkMyNotificationsReadMockHandler = (overrideResponse?: void | ((info: Parameters<Parameters<typeof http.post>[1]>[0]) => Promise<void> | void), options?: RequestHandlerOptions) => {
+  return http.post('*/me/notifications/read', async (info: Parameters<Parameters<typeof http.post>[1]>[0]) => {
+  if (typeof overrideResponse === 'function') {await overrideResponse(info); }
+
+    return new HttpResponse(null,
+      { status: 204
+      })
+  }, options)
+}
 export const getMeMock = () => [
   getGetMeMockHandler(),
   getUpdateMeMockHandler(),
@@ -218,5 +275,9 @@ export const getMeMock = () => [
   getGetMyCourtHandoversMockHandler(),
   getGetMyMatchesMockHandler(),
   getGetMyStatsMockHandler(),
-  getGetMyBookingsMockHandler()
+  getGetMyBookingsMockHandler(),
+  getGetMyPartnerRequestsMockHandler(),
+  getGetMyNotificationsMockHandler(),
+  getGetMyUnreadCountMockHandler(),
+  getMarkMyNotificationsReadMockHandler()
 ]

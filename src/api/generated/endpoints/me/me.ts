@@ -35,14 +35,19 @@ import type {
   GetMyCourtHandoversParams,
   GetMyCourtsParams,
   GetMyMatchesParams,
+  GetMyNotificationsParams,
+  GetMyPartnerRequestsParams,
   MeResponse,
   PageBookingResponse,
   PageClubResponse,
   PageCourtResponse,
   PageHandoverResponse,
   PageMatchResponse,
+  PageNotificationResponse,
+  PagePartnerRequestResponse,
   ResendVerificationParams,
   StatsResponse,
+  UnreadCountResponse,
   UpdatePlayerRequest
 } from '../../model';
 
@@ -1279,3 +1284,379 @@ export function useGetMyBookings<TData = Awaited<ReturnType<typeof getMyBookings
 
 
 
+export const getGetMyPartnerRequestsUrl = (params?: GetMyPartnerRequestsParams,) => {
+  const normalizedParams = new URLSearchParams();
+
+  Object.entries(params || {}).forEach(([key, value]) => {
+
+    if (value !== undefined) {
+      normalizedParams.append(key, value === null ? 'null' : String(value))
+    }
+  });
+
+  const stringifiedParams = normalizedParams.toString();
+
+  return stringifiedParams.length > 0 ? `/me/partner-requests?${stringifiedParams}` : `/me/partner-requests`
+}
+
+/**
+ * Partner requests the player made or joined, open and full ones. Upcoming ones (booking not started) come
+ * soonest first, past ones newest first.
+ */
+export const getMyPartnerRequests = async (params?: GetMyPartnerRequestsParams, options?: Parameters<typeof apiFetch>[1]): Promise<PagePartnerRequestResponse> => {
+
+  return apiFetch<PagePartnerRequestResponse>(getGetMyPartnerRequestsUrl(params),
+  {
+    ...options,
+    method: 'GET'
+
+
+  }
+);}
+
+
+
+
+
+export const getGetMyPartnerRequestsQueryKey = (params?: GetMyPartnerRequestsParams,) => {
+    return [
+    `/me/partner-requests`, ...(params ? [params] : [])
+    ] as const;
+    }
+
+
+export const getGetMyPartnerRequestsQueryOptions = <TData = Awaited<ReturnType<typeof getMyPartnerRequests>>, TError = ErrorType<ErrorBody>>(params?: GetMyPartnerRequestsParams, options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof getMyPartnerRequests>>, TError, TData>>, request?: SecondParameter<typeof apiFetch>}
+) => {
+
+const {query: queryOptions, request: requestOptions} = options ?? {};
+
+  const queryKey =  queryOptions?.queryKey ?? getGetMyPartnerRequestsQueryKey(params);
+
+
+
+    const queryFn: QueryFunction<Awaited<ReturnType<typeof getMyPartnerRequests>>> = ({ signal }) => getMyPartnerRequests(params, { signal, ...requestOptions });
+
+
+
+
+
+   return  { queryKey, queryFn, ...queryOptions} as UseQueryOptions<Awaited<ReturnType<typeof getMyPartnerRequests>>, TError, TData> & { queryKey: DataTag<QueryKey, TData, TError> }
+}
+
+export type GetMyPartnerRequestsQueryResult = NonNullable<Awaited<ReturnType<typeof getMyPartnerRequests>>>
+export type GetMyPartnerRequestsQueryError = ErrorType<ErrorBody>
+
+
+export function useGetMyPartnerRequests<TData = Awaited<ReturnType<typeof getMyPartnerRequests>>, TError = ErrorType<ErrorBody>>(
+ params: undefined |  GetMyPartnerRequestsParams, options: { query:Partial<UseQueryOptions<Awaited<ReturnType<typeof getMyPartnerRequests>>, TError, TData>> & Pick<
+        DefinedInitialDataOptions<
+          Awaited<ReturnType<typeof getMyPartnerRequests>>,
+          TError,
+          Awaited<ReturnType<typeof getMyPartnerRequests>>
+        > , 'initialData'
+      >, request?: SecondParameter<typeof apiFetch>}
+ , queryClient?: QueryClient
+  ):  DefinedUseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> }
+export function useGetMyPartnerRequests<TData = Awaited<ReturnType<typeof getMyPartnerRequests>>, TError = ErrorType<ErrorBody>>(
+ params?: GetMyPartnerRequestsParams, options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof getMyPartnerRequests>>, TError, TData>> & Pick<
+        UndefinedInitialDataOptions<
+          Awaited<ReturnType<typeof getMyPartnerRequests>>,
+          TError,
+          Awaited<ReturnType<typeof getMyPartnerRequests>>
+        > , 'initialData'
+      >, request?: SecondParameter<typeof apiFetch>}
+ , queryClient?: QueryClient
+  ):  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> }
+export function useGetMyPartnerRequests<TData = Awaited<ReturnType<typeof getMyPartnerRequests>>, TError = ErrorType<ErrorBody>>(
+ params?: GetMyPartnerRequestsParams, options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof getMyPartnerRequests>>, TError, TData>>, request?: SecondParameter<typeof apiFetch>}
+ , queryClient?: QueryClient
+  ):  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> }
+
+export function useGetMyPartnerRequests<TData = Awaited<ReturnType<typeof getMyPartnerRequests>>, TError = ErrorType<ErrorBody>>(
+ params?: GetMyPartnerRequestsParams, options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof getMyPartnerRequests>>, TError, TData>>, request?: SecondParameter<typeof apiFetch>}
+ , queryClient?: QueryClient
+ ):  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> } {
+
+  const queryOptions = getGetMyPartnerRequestsQueryOptions(params,options)
+
+  const query = useQuery(queryOptions, queryClient) as  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> };
+
+  return withQueryKey(query, queryOptions.queryKey);
+}
+
+
+
+
+
+
+export const getGetMyNotificationsUrl = (params?: GetMyNotificationsParams,) => {
+  const normalizedParams = new URLSearchParams();
+
+  Object.entries(params || {}).forEach(([key, value]) => {
+
+    if (value !== undefined) {
+      normalizedParams.append(key, value === null ? 'null' : String(value))
+    }
+  });
+
+  const stringifiedParams = normalizedParams.toString();
+
+  return stringifiedParams.length > 0 ? `/me/notifications?${stringifiedParams}` : `/me/notifications`
+}
+
+/**
+ * The notifications the player was sent, newest first; the last 50 are kept.
+ */
+export const getMyNotifications = async (params?: GetMyNotificationsParams, options?: Parameters<typeof apiFetch>[1]): Promise<PageNotificationResponse> => {
+
+  return apiFetch<PageNotificationResponse>(getGetMyNotificationsUrl(params),
+  {
+    ...options,
+    method: 'GET'
+
+
+  }
+);}
+
+
+
+
+
+export const getGetMyNotificationsQueryKey = (params?: GetMyNotificationsParams,) => {
+    return [
+    `/me/notifications`, ...(params ? [params] : [])
+    ] as const;
+    }
+
+
+export const getGetMyNotificationsQueryOptions = <TData = Awaited<ReturnType<typeof getMyNotifications>>, TError = ErrorType<ErrorBody>>(params?: GetMyNotificationsParams, options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof getMyNotifications>>, TError, TData>>, request?: SecondParameter<typeof apiFetch>}
+) => {
+
+const {query: queryOptions, request: requestOptions} = options ?? {};
+
+  const queryKey =  queryOptions?.queryKey ?? getGetMyNotificationsQueryKey(params);
+
+
+
+    const queryFn: QueryFunction<Awaited<ReturnType<typeof getMyNotifications>>> = ({ signal }) => getMyNotifications(params, { signal, ...requestOptions });
+
+
+
+
+
+   return  { queryKey, queryFn, ...queryOptions} as UseQueryOptions<Awaited<ReturnType<typeof getMyNotifications>>, TError, TData> & { queryKey: DataTag<QueryKey, TData, TError> }
+}
+
+export type GetMyNotificationsQueryResult = NonNullable<Awaited<ReturnType<typeof getMyNotifications>>>
+export type GetMyNotificationsQueryError = ErrorType<ErrorBody>
+
+
+export function useGetMyNotifications<TData = Awaited<ReturnType<typeof getMyNotifications>>, TError = ErrorType<ErrorBody>>(
+ params: undefined |  GetMyNotificationsParams, options: { query:Partial<UseQueryOptions<Awaited<ReturnType<typeof getMyNotifications>>, TError, TData>> & Pick<
+        DefinedInitialDataOptions<
+          Awaited<ReturnType<typeof getMyNotifications>>,
+          TError,
+          Awaited<ReturnType<typeof getMyNotifications>>
+        > , 'initialData'
+      >, request?: SecondParameter<typeof apiFetch>}
+ , queryClient?: QueryClient
+  ):  DefinedUseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> }
+export function useGetMyNotifications<TData = Awaited<ReturnType<typeof getMyNotifications>>, TError = ErrorType<ErrorBody>>(
+ params?: GetMyNotificationsParams, options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof getMyNotifications>>, TError, TData>> & Pick<
+        UndefinedInitialDataOptions<
+          Awaited<ReturnType<typeof getMyNotifications>>,
+          TError,
+          Awaited<ReturnType<typeof getMyNotifications>>
+        > , 'initialData'
+      >, request?: SecondParameter<typeof apiFetch>}
+ , queryClient?: QueryClient
+  ):  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> }
+export function useGetMyNotifications<TData = Awaited<ReturnType<typeof getMyNotifications>>, TError = ErrorType<ErrorBody>>(
+ params?: GetMyNotificationsParams, options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof getMyNotifications>>, TError, TData>>, request?: SecondParameter<typeof apiFetch>}
+ , queryClient?: QueryClient
+  ):  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> }
+
+export function useGetMyNotifications<TData = Awaited<ReturnType<typeof getMyNotifications>>, TError = ErrorType<ErrorBody>>(
+ params?: GetMyNotificationsParams, options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof getMyNotifications>>, TError, TData>>, request?: SecondParameter<typeof apiFetch>}
+ , queryClient?: QueryClient
+ ):  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> } {
+
+  const queryOptions = getGetMyNotificationsQueryOptions(params,options)
+
+  const query = useQuery(queryOptions, queryClient) as  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> };
+
+  return withQueryKey(query, queryOptions.queryKey);
+}
+
+
+
+
+
+
+export const getGetMyUnreadCountUrl = () => {
+
+
+
+
+  return `/me/notifications/unread`
+}
+
+/**
+ * How many notifications arrived since the player last marked the list as read.
+ */
+export const getMyUnreadCount = async ( options?: Parameters<typeof apiFetch>[1]): Promise<UnreadCountResponse> => {
+
+  return apiFetch<UnreadCountResponse>(getGetMyUnreadCountUrl(),
+  {
+    ...options,
+    method: 'GET'
+
+
+  }
+);}
+
+
+
+
+
+export const getGetMyUnreadCountQueryKey = () => {
+    return [
+    `/me/notifications/unread`
+    ] as const;
+    }
+
+
+export const getGetMyUnreadCountQueryOptions = <TData = Awaited<ReturnType<typeof getMyUnreadCount>>, TError = ErrorType<ErrorBody>>( options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof getMyUnreadCount>>, TError, TData>>, request?: SecondParameter<typeof apiFetch>}
+) => {
+
+const {query: queryOptions, request: requestOptions} = options ?? {};
+
+  const queryKey =  queryOptions?.queryKey ?? getGetMyUnreadCountQueryKey();
+
+
+
+    const queryFn: QueryFunction<Awaited<ReturnType<typeof getMyUnreadCount>>> = ({ signal }) => getMyUnreadCount({ signal, ...requestOptions });
+
+
+
+
+
+   return  { queryKey, queryFn, ...queryOptions} as UseQueryOptions<Awaited<ReturnType<typeof getMyUnreadCount>>, TError, TData> & { queryKey: DataTag<QueryKey, TData, TError> }
+}
+
+export type GetMyUnreadCountQueryResult = NonNullable<Awaited<ReturnType<typeof getMyUnreadCount>>>
+export type GetMyUnreadCountQueryError = ErrorType<ErrorBody>
+
+
+export function useGetMyUnreadCount<TData = Awaited<ReturnType<typeof getMyUnreadCount>>, TError = ErrorType<ErrorBody>>(
+  options: { query:Partial<UseQueryOptions<Awaited<ReturnType<typeof getMyUnreadCount>>, TError, TData>> & Pick<
+        DefinedInitialDataOptions<
+          Awaited<ReturnType<typeof getMyUnreadCount>>,
+          TError,
+          Awaited<ReturnType<typeof getMyUnreadCount>>
+        > , 'initialData'
+      >, request?: SecondParameter<typeof apiFetch>}
+ , queryClient?: QueryClient
+  ):  DefinedUseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> }
+export function useGetMyUnreadCount<TData = Awaited<ReturnType<typeof getMyUnreadCount>>, TError = ErrorType<ErrorBody>>(
+  options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof getMyUnreadCount>>, TError, TData>> & Pick<
+        UndefinedInitialDataOptions<
+          Awaited<ReturnType<typeof getMyUnreadCount>>,
+          TError,
+          Awaited<ReturnType<typeof getMyUnreadCount>>
+        > , 'initialData'
+      >, request?: SecondParameter<typeof apiFetch>}
+ , queryClient?: QueryClient
+  ):  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> }
+export function useGetMyUnreadCount<TData = Awaited<ReturnType<typeof getMyUnreadCount>>, TError = ErrorType<ErrorBody>>(
+  options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof getMyUnreadCount>>, TError, TData>>, request?: SecondParameter<typeof apiFetch>}
+ , queryClient?: QueryClient
+  ):  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> }
+
+export function useGetMyUnreadCount<TData = Awaited<ReturnType<typeof getMyUnreadCount>>, TError = ErrorType<ErrorBody>>(
+  options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof getMyUnreadCount>>, TError, TData>>, request?: SecondParameter<typeof apiFetch>}
+ , queryClient?: QueryClient
+ ):  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> } {
+
+  const queryOptions = getGetMyUnreadCountQueryOptions(options)
+
+  const query = useQuery(queryOptions, queryClient) as  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> };
+
+  return withQueryKey(query, queryOptions.queryKey);
+}
+
+
+
+
+
+
+export const getMarkMyNotificationsReadUrl = () => {
+
+
+
+
+  return `/me/notifications/read`
+}
+
+/**
+ * Marks every notification sent so far as read.
+ */
+export const markMyNotificationsRead = async ( options?: Parameters<typeof apiFetch>[1]): Promise<void> => {
+
+  return apiFetch<void>(getMarkMyNotificationsReadUrl(),
+  {
+    ...options,
+    method: 'POST'
+
+
+  }
+);}
+
+
+
+
+
+export const getMarkMyNotificationsReadMutationKey = () => ['markMyNotificationsRead'] as const;
+
+export const getMarkMyNotificationsReadMutationOptions = <TError = ErrorType<ErrorBody>,
+    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof markMyNotificationsRead>>, TError,void, TContext>, request?: SecondParameter<typeof apiFetch>}
+): UseMutationOptions<Awaited<ReturnType<typeof markMyNotificationsRead>>, TError,void, TContext> => {
+
+const mutationKey = getMarkMyNotificationsReadMutationKey();
+const {mutation: mutationOptions, request: requestOptions} = options ?
+      options.mutation && 'mutationKey' in options.mutation && options.mutation.mutationKey ?
+      options
+      : {...options, mutation: {...options.mutation, mutationKey}}
+      : {mutation: { mutationKey, }, request: undefined};
+
+
+
+
+      const mutationFn: MutationFunction<Awaited<ReturnType<typeof markMyNotificationsRead>>, void> = () => {
+
+
+          return  markMyNotificationsRead(requestOptions)
+        }
+
+
+
+
+
+
+  return  { mutationFn, ...mutationOptions }}
+
+    export type MarkMyNotificationsReadMutationResult = NonNullable<Awaited<ReturnType<typeof markMyNotificationsRead>>>
+
+    export type MarkMyNotificationsReadMutationError = ErrorType<ErrorBody>
+
+
+    export const useMarkMyNotificationsRead = <TError = ErrorType<ErrorBody>,
+    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof markMyNotificationsRead>>, TError,void, TContext>, request?: SecondParameter<typeof apiFetch>}
+ , queryClient?: QueryClient): UseMutationResult<
+        Awaited<ReturnType<typeof markMyNotificationsRead>>,
+        TError,
+        void,
+        TContext
+      > => {
+      return useMutation(getMarkMyNotificationsReadMutationOptions(options), queryClient);
+    }

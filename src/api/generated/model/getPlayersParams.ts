@@ -11,6 +11,10 @@ export type GetPlayersParams = {
 city?: string;
 level?: PlayerLevel;
 /**
+ * Only players whose first name, last name or nickname start with these words.
+ */
+q?: string;
+/**
  * Page size, 1 to 100. Default 20.
  */
 limit?: number;

@@ -14,6 +14,7 @@ import {
   type Session,
 } from "@/api";
 import i18n, { isLanguage } from "@/i18n";
+import { forgetPushToken } from "@/notifications";
 import { tokenStorage } from "./tokenStore";
 
 export type AuthStatus = "restoring" | "signedOut" | "signedIn";
@@ -87,6 +88,8 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
   const signOut = useCallback(async () => {
     const current = tokens.get();
+    // Stop pushes to this phone while the session can still say so.
+    if (current) await forgetPushToken();
     if (current) await logout({ refreshToken: current.refreshToken }).catch(() => {});
     await tokens.clear();
   }, []);

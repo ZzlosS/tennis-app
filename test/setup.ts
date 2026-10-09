@@ -1,4 +1,9 @@
+import { configure } from "@testing-library/react-native";
+
 import { server } from "./msw";
+
+// findBy* waits up to 5 s: screens load data over MSW, and CI runners are slower than laptops.
+configure({ asyncUtilTimeout: 5000 });
 
 process.env.EXPO_PUBLIC_API_URL = "http://api.test/v1";
 
@@ -9,3 +14,38 @@ afterAll(() => server.close());
 jest.mock("@react-native-community/netinfo", () =>
   require("@react-native-community/netinfo/jest/netinfo-mock.js"),
 );
+
+jest.mock("@react-native-async-storage/async-storage", () =>
+  require("@react-native-async-storage/async-storage/jest/async-storage-mock"),
+);
+
+jest.mock("expo-secure-store", () => require("./secureStoreMock"));
+
+// Every test starts signed out, with no saved session or settings.
+beforeEach(async () => {
+  const { secureStore } = require("./secureStoreMock");
+  const { tokens } = require("@/api");
+  const storage = require("@react-native-async-storage/async-storage");
+  const AsyncStorage = storage.default ?? storage;
+  secureStore.clear();
+  await tokens.clear();
+  await AsyncStorage.clear();
+});
+
+jest.mock("expo-location", () => require("./locationMock"));
+jest.mock("react-native-maps", () => require("./mapsMock"));
+
+beforeEach(() => {
+  const { mockLocation } = require("./locationMock");
+  mockLocation.status = "granted";
+  mockLocation.coords = { latitude: 44.8, longitude: 20.4 };
+});
+
+jest.mock("expo-notifications", () => require("./notificationsMock"));
+
+beforeEach(() => {
+  const { mockPush } = require("./notificationsMock");
+  mockPush.status = "undetermined";
+  mockPush.lastResponse = null;
+  mockPush.tapListeners = [];
+});
