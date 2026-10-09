@@ -370,5 +370,11 @@
     "title": "Reservation",
     "openRequest": "See the partner request",
     "openCourt": "See the court"
+  },
+  "notifications": {
+    "title": "Notifications",
+    "empty": "Nothing yet",
+    "emptyHint": "Reminders, cancellations, partners and match results show here.",
+    "bellUnread": "Notifications, {{count}} unread"
   }
 }

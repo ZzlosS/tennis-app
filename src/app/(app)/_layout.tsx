@@ -1,5 +1,6 @@
 import { Stack } from "expo-router";
 
+import { useNotificationTaps } from "@/notifications";
 import { useTheme } from "@/theme";
 
 // Forms open as modals: a card on phones, a full page on web.
@@ -17,6 +18,7 @@ const MODALS = new Set([
 // Everything a signed-in player sees: the tabs, plus detail screens and forms pushed on top of them.
 export default function AppLayout() {
   const { colors } = useTheme();
+  useNotificationTaps();
   return (
     <Stack
       screenOptions={({ route }) => ({

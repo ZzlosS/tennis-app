@@ -7,6 +7,7 @@ import {
   getGetMyBookingsQueryKey,
   getGetPartnerRequestsQueryKey,
   useGetMyBookings,
+  useGetMyUnreadCount,
   useGetPartnerRequests,
   type BookingResponse,
 } from "@/api";
@@ -15,7 +16,43 @@ import { useAuth } from "@/auth";
 import { addDays, formatDate, formatMoney, formatTime, localDate } from "@/format";
 import { intlLocale } from "@/i18n";
 import { useTheme } from "@/theme";
-import { Avatar, Card, Screen, Text, type IconName } from "@/ui";
+import { Avatar, Card, IconButton, Screen, Text, type IconName } from "@/ui";
+
+/** The bell on Home, with the number of unread notifications. */
+function Bell() {
+  const { t } = useTranslation();
+  const { colors } = useTheme();
+  const unread = useGetMyUnreadCount().data?.count ?? 0;
+  return (
+    <View>
+      <IconButton
+        icon="notifications-outline"
+        label={unread > 0 ? t("notifications.bellUnread", { count: unread }) : t("notifications.title")}
+        onPress={() => router.push("/notifications")}
+      />
+      {unread > 0 ? (
+        <View
+          style={{
+            position: "absolute",
+            top: -2,
+            right: -2,
+            minWidth: 18,
+            height: 18,
+            borderRadius: 9,
+            paddingHorizontal: 4,
+            alignItems: "center",
+            justifyContent: "center",
+            backgroundColor: colors.danger,
+          }}
+        >
+          <Text variant="label" style={{ color: colors.onDanger, fontSize: 11 }}>
+            {unread > 9 ? "9+" : String(unread)}
+          </Text>
+        </View>
+      ) : null}
+    </View>
+  );
+}
 
 function NextBooking({ booking }: { booking: BookingResponse }) {
   const { t, i18n } = useTranslation();
@@ -103,6 +140,7 @@ export default function Home() {
             {me ? t("home.greeting", { name: me.firstName }) : t("home.greetingNoName")}
           </Text>
         </View>
+        <Bell />
         {me ? <Avatar name={name} size={44} /> : null}
       </View>
 

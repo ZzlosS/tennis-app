@@ -370,5 +370,11 @@
     "title": "Rezervacija",
     "openRequest": "Pogledaj zahtev za partnera",
     "openCourt": "Pogledaj teren"
+  },
+  "notifications": {
+    "title": "Obaveštenja",
+    "empty": "Još ništa",
+    "emptyHint": "Ovde se pojavljuju podsetnici, otkazivanja, partneri i rezultati mečeva.",
+    "bellUnread": "Obaveštenja, nepročitanih: {{count}}"
   }
 }

@@ -40,3 +40,12 @@ beforeEach(() => {
   mockLocation.status = "granted";
   mockLocation.coords = { latitude: 44.8, longitude: 20.4 };
 });
+
+jest.mock("expo-notifications", () => require("./notificationsMock"));
+
+beforeEach(() => {
+  const { mockPush } = require("./notificationsMock");
+  mockPush.status = "undetermined";
+  mockPush.lastResponse = null;
+  mockPush.tapListeners = [];
+});
