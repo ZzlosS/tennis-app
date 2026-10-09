@@ -26,3 +26,12 @@ beforeEach(async () => {
   await tokens.clear();
   await AsyncStorage.clear();
 });
+
+jest.mock("expo-location", () => require("./locationMock"));
+jest.mock("react-native-maps", () => require("./mapsMock"));
+
+beforeEach(() => {
+  const { mockLocation } = require("./locationMock");
+  mockLocation.status = "granted";
+  mockLocation.coords = { latitude: 44.8, longitude: 20.4 };
+});

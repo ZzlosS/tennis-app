@@ -26,14 +26,25 @@ export function emptyLists(): RequestHandler[] {
   ];
 }
 
-/** Opens the app at `url` with a saved session for `me`. Later server.use() handlers win. */
+// Handlers openSignedIn added, so a second call in one test replaces them instead of keeping them.
+const defaults = new WeakSet<object>();
+
+/**
+ * Opens the app at `url` with a saved session for `me`. Handlers the test added before (or adds
+ * after) win over the defaults set here.
+ */
 export async function openSignedIn(url: string, me: Partial<MeResponse> = {}) {
   const player = buildMe(me);
-  server.use(
+  const fromTest = server.listHandlers().filter((handler) => !defaults.has(handler));
+  const mine = [
     ...emptyLists(),
     http.get(`${API}/me`, () => HttpResponse.json(player)),
     http.post(`${API}/auth/logout`, () => new HttpResponse(null, { status: 204 })),
-  );
+  ];
+  mine.forEach((handler) => defaults.add(handler));
+  server.resetHandlers();
+  server.use(...mine);
+  server.use(...(fromTest as RequestHandler[]));
   secureStore.set("rally.session", JSON.stringify({ accessToken: "A1", refreshToken: "R1" }));
   const view = renderRouter("./src/app", { initialUrl: url });
   return { view, player, screen };

@@ -1,4 +1,4 @@
-import { router } from "expo-router";
+import { goBack } from "@/navigation";
 import type { ReactNode } from "react";
 import { useTranslation } from "react-i18next";
 import { View } from "react-native";
@@ -21,7 +21,7 @@ type Props = {
 export function ScreenHeader({ title, subtitle, onBack, hideBack = false, right }: Props) {
   const { t } = useTranslation();
   const { spacing } = useTheme();
-  const back = onBack ?? (() => (router.canGoBack() ? router.back() : router.replace("/home")));
+  const back = onBack ?? (() => goBack());
   return (
     <View style={{ flexDirection: "row", alignItems: "center", gap: spacing.md }}>
       {hideBack ? null : <IconButton icon="chevron-back" label={t("common.back")} onPress={back} />}

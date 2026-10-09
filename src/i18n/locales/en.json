@@ -90,7 +90,6 @@
     "reservations": "Reservations"
   },
   "placeholder": {
-    "explore": "Clubs and courts near you will show here.",
     "bookings": "Your reservations will show here.",
     "partners": "Open partner requests will show here."
   },
@@ -143,5 +142,74 @@
     "map": "Map",
     "reserve": "Reserve",
     "partners": "Partners"
+  },
+  "explore": {
+    "search": "Search city or club",
+    "view": "Show as",
+    "list": "List",
+    "map": "Map",
+    "showList": "Show as list",
+    "all": "All",
+    "clubs": "Clubs",
+    "courts": "Courts: {{count}}",
+    "nearYou": "Near you",
+    "nearBelgrade": "Near Belgrade",
+    "within": "· within {{km}} km",
+    "noLocation": "Location is off, so places near Belgrade are shown. Search for your city.",
+    "viewCourts": "View courts",
+    "viewCourt": "View court",
+    "reserve": "Reserve",
+    "nothingNear": "No courts nearby yet",
+    "noMatches": "Nothing matches your search",
+    "addHint": "Know a court that's missing? Add it.",
+    "addCourt": "Add a court"
+  },
+  "surface": {
+    "CLAY": "Clay",
+    "HARD": "Hard",
+    "GRASS": "Grass"
+  },
+  "club": {
+    "title": "Club",
+    "courts": "Courts",
+    "noCourts": "This club has no open courts right now.",
+    "payHere": "Reserve here, pay at the club. Prices in {{currency}}.",
+    "reserveCourt": "Reserve {{court}}"
+  },
+  "court": {
+    "title": "Court",
+    "covered": "Covered",
+    "outdoor": "Outdoor",
+    "doubles": "Doubles",
+    "closed": "This court is closed for reservations right now.",
+    "openClub": "More at {{club}}",
+    "yourCourt": "Your court",
+    "giveToClub": "Give to a club",
+    "deleteTitle": "Delete {{name}}?",
+    "deleteMessage": "Its future reservations are cancelled. This can't be undone."
+  },
+  "courtForm": {
+    "addTitle": "Add a court",
+    "editTitle": "Edit court",
+    "whoCanUse": "Who can use it",
+    "publicHint": "Anyone can play here, like a park court.",
+    "privateHint": "Your own court. Others reserve it through you.",
+    "name": "Name",
+    "surface": "Surface",
+    "free": "Free to play",
+    "price": "Price per hour",
+    "currency": "Currency",
+    "priceInvalid": "Enter a price, like 1800 or 12.50.",
+    "ownerNote": "You'll own this court. You can edit it, delete it or give it to a club.",
+    "add": "Add court"
+  },
+  "handover": {
+    "explain": "Pick the club that will run this court. Its admins accept or decline, and the court stays yours until they accept.",
+    "clubsIn": "Clubs in {{city}}",
+    "noClubs": "No clubs here yet",
+    "confirmTitle": "Give this court to {{club}}?",
+    "confirmMessage": "If the club accepts, it manages the court and its reservations from then on.",
+    "send": "Send request",
+    "sent": "Request sent to {{club}}. You'll get a notification when they answer."
   }
 }

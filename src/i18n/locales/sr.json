@@ -90,7 +90,6 @@
     "reservations": "Rezervacije"
   },
   "placeholder": {
-    "explore": "Ovde će biti klubovi i tereni u vašoj blizini.",
     "bookings": "Ovde će biti vaše rezervacije.",
     "partners": "Ovde će biti otvoreni pozivi za partnera."
   },
@@ -143,5 +142,74 @@
     "map": "Mapa",
     "reserve": "Rezerviši",
     "partners": "Partneri"
+  },
+  "explore": {
+    "search": "Pretraži grad ili klub",
+    "view": "Prikaži kao",
+    "list": "Lista",
+    "map": "Mapa",
+    "showList": "Prikaži kao listu",
+    "all": "Sve",
+    "clubs": "Klubovi",
+    "courts": "Terena: {{count}}",
+    "nearYou": "U blizini",
+    "nearBelgrade": "Oko Beograda",
+    "within": "· do {{km}} km",
+    "noLocation": "Lokacija je isključena, pa su prikazana mesta oko Beograda. Potražite svoj grad.",
+    "viewCourts": "Tereni",
+    "viewCourt": "Pogledaj teren",
+    "reserve": "Rezerviši",
+    "nothingNear": "Još nema terena u blizini",
+    "noMatches": "Ništa ne odgovara pretrazi",
+    "addHint": "Znate teren koji nedostaje? Dodajte ga.",
+    "addCourt": "Dodaj teren"
+  },
+  "surface": {
+    "CLAY": "Šljaka",
+    "HARD": "Tvrda podloga",
+    "GRASS": "Trava"
+  },
+  "club": {
+    "title": "Klub",
+    "courts": "Tereni",
+    "noCourts": "Klub trenutno nema otvorenih terena.",
+    "payHere": "Rezervišite ovde, platite u klubu. Cene su u {{currency}}.",
+    "reserveCourt": "Rezerviši {{court}}"
+  },
+  "court": {
+    "title": "Teren",
+    "covered": "Pokriven",
+    "outdoor": "Otvoren",
+    "doubles": "Za dubl",
+    "closed": "Teren je trenutno zatvoren za rezervacije.",
+    "openClub": "Više u klubu {{club}}",
+    "yourCourt": "Vaš teren",
+    "giveToClub": "Predaj klubu",
+    "deleteTitle": "Obrisati {{name}}?",
+    "deleteMessage": "Buduće rezervacije se otkazuju. Ovo se ne može poništiti."
+  },
+  "courtForm": {
+    "addTitle": "Dodaj teren",
+    "editTitle": "Izmeni teren",
+    "whoCanUse": "Ko može da igra",
+    "publicHint": "Svako može da igra ovde, kao na terenu u parku.",
+    "privateHint": "Vaš teren. Drugi ga rezervišu preko vas.",
+    "name": "Naziv",
+    "surface": "Podloga",
+    "free": "Besplatno igranje",
+    "price": "Cena po satu",
+    "currency": "Valuta",
+    "priceInvalid": "Unesite cenu, na primer 1800 ili 12,50.",
+    "ownerNote": "Teren će biti vaš. Možete ga izmeniti, obrisati ili predati klubu.",
+    "add": "Dodaj teren"
+  },
+  "handover": {
+    "explain": "Izaberite klub koji će voditi teren. Administratori kluba prihvataju ili odbijaju, a teren ostaje vaš dok ne prihvate.",
+    "clubsIn": "Klubovi u mestu {{city}}",
+    "noClubs": "Ovde još nema klubova",
+    "confirmTitle": "Predati teren klubu {{club}}?",
+    "confirmMessage": "Ako klub prihvati, od tada on upravlja terenom i rezervacijama.",
+    "send": "Pošalji zahtev",
+    "sent": "Zahtev je poslat klubu {{club}}. Dobićete obaveštenje kada odgovore."
   }
 }
