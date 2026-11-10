@@ -9,20 +9,37 @@ Needs Node 22.
 
 ```bash
 npm install
-cp example.env .env.local   # then set EXPO_PUBLIC_API_URL
+cp example.env .env.local   # EXPO_PUBLIC_API_URL=auto finds a local backend by itself
 npm run web                 # browser at http://localhost:8081
 npm start                   # then scan the QR code with Expo Go, or press a / i
 ```
 
-`EXPO_PUBLIC_API_URL` points at the API, including `/v1`:
+`EXPO_PUBLIC_API_URL` points at the API, including `/v1`. After changing it, restart Metro with `npx expo start -c`;
+the value is built into the bundle, so a reload keeps the old one.
 
-| Backend                                          | URL                                             |
-| ------------------------------------------------ | ----------------------------------------------- |
-| Local backend (`npm run dev` in `ZzlosS/tennis`) | `http://localhost:8787/v1`                      |
-| Backend mock (`npm run mock` in `ZzlosS/tennis`) | `http://localhost:4010` (the mock has no `/v1`) |
-| Android emulator to a local backend              | `http://10.0.2.2:8787/v1`                       |
+| Backend                                          | URL                                                                                      |
+| ------------------------------------------------ | ---------------------------------------------------------------------------------------- |
+| Local backend (`npm run dev` in `ZzlosS/tennis`) | `auto`: the computer running Metro, port 8787 (web, simulator, emulator, phone on Wi-Fi) |
+| Local backend, fixed address                     | `http://localhost:8787/v1` (web, iOS simulator, after `adb reverse`)                     |
+| Android emulator, fixed address                  | `http://10.0.2.2:8787/v1`                                                                |
+| Backend mock (`npm run mock` in `ZzlosS/tennis`) | `http://localhost:4010` (the mock has no `/v1`)                                          |
 
 The backend's `CORS_ORIGINS` must include `http://localhost:8081` for the web app (it does by default).
+
+## Run on an emulator or a phone
+
+The whole guide, with debugging, is the
+[local development and debugging plan](https://claude.ai/artifact/W2hUFqEgqj1VGMBfxtQsQF). In short:
+
+- **iOS simulator (macOS):** install Xcode, `npm start`, press `i`.
+- **Android emulator:** create a device with Google Play in Android Studio, start it, `npm start`, press `a`.
+- **Android phone on USB:** turn on USB debugging, then `adb reverse tcp:8787 tcp:8787` and
+  `adb reverse tcp:8081 tcp:8081`, and open the app from Expo Go.
+- **Any phone on the same Wi-Fi:** scan the QR code with Expo Go. If the app can't reach the API, open
+  `http://<your computer's IP>:8787/health` on the phone; if that fails, allow Node through the computer's firewall.
+- **Push notifications** don't work in Expo Go. Build a development build once with
+  `npx eas-cli@latest build --profile development --platform android`, install it from the link EAS prints, and
+  open the project from it while `npm start` runs. Rebuild only when native packages or plugins change.
 
 ## How the code is laid out
 
@@ -76,5 +93,5 @@ CI runs all of them on every pull request.
 `eas.json` has three profiles: `development` (dev client), `preview` (internal testing) and `production`.
 Each sets `APP_ENV`, which `app.config.ts` uses for the app name. The Expo project id is in `app.config.ts`
 (`EAS_PROJECT_ID` overrides it), so push notifications work on real phones and `npx eas-cli@latest build`
-finds the project. The project's slug on expo.dev is `ajmo` and must match `slug` here; set `EXPO_OWNER` when building
-under an Expo account other than the one you are logged in with.
+finds the project. The project's slug on expo.dev is `ajmo` and must match `slug` here; the owner is the `sstrales-team`
+Expo account (`EXPO_OWNER` overrides it for a fork).
